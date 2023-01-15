@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/pages/Shared/_LayoutAdmin.cshtml";
+}
+
+@section styles{
+    @RenderSection("styles", required: false)
+}
+
+<div class="container-fluid" dir="ltr">
+
+    <div class="row">
+        <div class="col-sm-2 p-0 m-0">
+
+            <partial name="_Sidebar" />
+        </div>
+        <div class="col-sm-10">
+
+            @RenderBody()
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+    @RenderSection("scripts", required: false)
+
+}
