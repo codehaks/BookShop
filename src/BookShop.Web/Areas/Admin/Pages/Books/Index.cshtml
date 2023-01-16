@@ -2,3 +2,44 @@
 @model BookShop.Web.Areas.Admin.Pages.Books.IndexModel
 @{
 }
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h2>Book List</h2>
+
+<p>
+    <a asp-page="./Create" class="btn btn-primary">Add New Book</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.BookList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                   
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

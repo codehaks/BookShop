@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Domain\" />
     <Folder Include="Application\" />
-    <Folder Include="Infrastructure\DataModels\" />
   </ItemGroup>
 
   <ItemGroup>
