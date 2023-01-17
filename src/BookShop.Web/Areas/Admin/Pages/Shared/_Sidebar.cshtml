@@ -1,11 +1,9 @@
 ﻿<div class="list-group" style="border-radius:0">
-    <a asp-area="" class="list-group-item"><strong>Home</strong></a>
     <a href="#" class="list-group-item active">
         Admin
     </a>
+    <a asp-area="admin" asp-page="/index" class="list-group-item"><strong>Dashboard</strong></a>
+    <a asp-area="admin" asp-page="/books/index" class="list-group-item">Books</a>
 
-    <a asp-area="admin" class="list-group-item"><strong>Dashboard</strong></a>
-    <a asp-area="admin" asp-page="./books/index" class="list-group-item">Books</a>
 
-    
 </div>
