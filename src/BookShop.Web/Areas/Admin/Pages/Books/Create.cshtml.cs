@@ -15,15 +15,6 @@ public class CreateModel : PageModel
     public int Pages { get; set; }
     public void OnGet()
     {
-        var b = new BookData
-        {
-            Author = "",
-            Description = "",
-            Name = ""
-        };
-
-        var n = b.Name;
-
-        // save to database
+      
     }
 }
