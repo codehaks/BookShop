@@ -29,6 +29,7 @@ public class BookService : IBookService
             Pages = input.Pages,
             Price = input.Price,
             Year = input.Year,
+            CoverImage= input.CoverImage,
         });
 
         _db.SaveChanges();

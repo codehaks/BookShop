@@ -23,5 +23,8 @@ public class BookData
     public required string Author { get; set; }
     public int Year { get; set; }
     public int Pages { get; set; }
-    
+
+    [MaxLength(1_000_000)]
+    public byte[]? CoverImage { get; set; }
+
 }

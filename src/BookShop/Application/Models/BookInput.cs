@@ -18,4 +18,6 @@ public class BookCreateModel
     public  string Author { get; set; }
     public int Year { get; set; }
     public int Pages { get; set; }
+
+    public byte[]? CoverImage { get; set; }
 }

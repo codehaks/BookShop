@@ -12,8 +12,14 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Input.CoverImage" class="control-label"></label>
+                <input asp-for="Input.CoverImage" class="form-control" />
+                <span asp-validation-for="Input.CoverImage" class="text-danger"></span>
+            </div>
+            
             <div class="mb-3">
                 <label asp-for="Input.Name" class="control-label"></label>
                 <input asp-for="Input.Name" class="form-control" />
