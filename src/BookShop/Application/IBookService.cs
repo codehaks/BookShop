@@ -7,5 +7,6 @@ namespace BookShop.Application
     {
         IList<BookItem> GetAll();
         void Create(BookCreateModel input);
+        BookDetails GetDetails(int bookId);
     }
 }

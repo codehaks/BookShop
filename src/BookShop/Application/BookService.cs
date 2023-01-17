@@ -35,6 +35,24 @@ public class BookService : IBookService
         _db.SaveChanges();
     }
 
+    public BookDetails GetDetails(int bookId)
+    {
+        var book=_db.Books.Find(bookId);
+        var result = new BookDetails
+        {
+            Author = book.Author,
+            CoverImage = book.CoverImage,
+            Name = book.Name,
+            Description = book.Description,
+            Id = book.Id,
+            Pages = book.Pages,
+            Price = book.Price,
+            Year = book.Year
+        };
+
+        return result;
+    }
+
     public IList<BookItem> GetAll()
     {
         return _db.Books.Select(b => new BookItem

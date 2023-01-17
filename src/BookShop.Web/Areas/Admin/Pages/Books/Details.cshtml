@@ -1,0 +1,15 @@
+﻿@page
+@model BookShop.Web.Areas.Admin.Pages.Books.DetailsModel
+@{
+
+}
+
+<h1>Book Details</h1>
+<hr />
+
+<p>Name : @Model.Output.Name</p>
+
+@if (Model.Output.CoverImage is not null)
+{
+    <img src="@("data:image/jpg;base64,"+Convert.ToBase64String(Model.Output.CoverImage))" />
+}

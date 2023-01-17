@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BookShop.Application.Models;
-
 public class BookCreateModel
 {
     public  string Name { get; set; }
