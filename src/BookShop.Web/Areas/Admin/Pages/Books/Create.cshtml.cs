@@ -1,5 +1,7 @@
 using BookShop.Application;
+using BookShop.Application.Models;
 using BookShop.Infrastructure.DataModels;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Build.Framework;
@@ -37,17 +39,7 @@ public class CreateModel : PageModel
         Input.CoverImage.CopyTo(ms);
         ms.Position = 0;
 
-        _bookService.Create(new Application.Models.BookCreateModel
-        {
-            Author = Input.Author,
-            Description = Input.Description,
-            Name = Input.Name,
-            Pages = Input.Pages,
-            Price = Input.Price,
-            Year = Input.Year,
-            CoverImage = ms.ToArray(),
-
-        });
+        _bookService.Create(Input.Adapt<BookCreateModel>());
 
         return RedirectToPage("./index");
     }
