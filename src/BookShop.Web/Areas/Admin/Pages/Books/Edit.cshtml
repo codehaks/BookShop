@@ -1,23 +1,25 @@
 ﻿@page
-@model BookShop.Web.Areas.Admin.Pages.Books.CreateModel
-
+@model BookShop.Web.Areas.Admin.Pages.Books.EditModel
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-<h2>New Book</h2>
+<h2>Edit Book</h2>
 
 <hr />
 <div class="row">
     <div class="col-md-6">
         <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="Input.Id" hidden/>
+
             <div class="mb-3">
                 <label asp-for="Input.CoverImage" class="control-label"></label>
                 <input asp-for="Input.CoverImage" class="form-control" />
                 <span asp-validation-for="Input.CoverImage" class="text-danger"></span>
             </div>
-            
+
             <div class="mb-3">
                 <label asp-for="Input.Name" class="control-label"></label>
                 <input asp-for="Input.Name" class="form-control" />
