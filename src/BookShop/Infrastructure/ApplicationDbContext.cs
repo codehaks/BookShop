@@ -5,7 +5,7 @@ using System.Reflection.Emit;
 using System.Reflection.Metadata;
 
 namespace BookShop.Infrastructure;
-public class ApplicationDbContext : IdentityDbContext
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
