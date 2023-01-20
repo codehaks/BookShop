@@ -12,13 +12,7 @@
         <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <input asp-for="Input.Id" hidden/>
-
-            <div class="mb-3">
-                <label asp-for="Input.CoverImage" class="control-label"></label>
-                <input asp-for="Input.CoverImage" class="form-control" />
-                <span asp-validation-for="Input.CoverImage" class="text-danger"></span>
-            </div>
+            <input asp-for="Input.Id" hidden/>         
 
             <div class="mb-3">
                 <label asp-for="Input.Name" class="control-label"></label>
@@ -26,31 +20,10 @@
                 <span asp-validation-for="Input.Name" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="Input.Description" class="control-label"></label>
-                <textarea asp-for="Input.Description" class="form-control">
-
-                </textarea>
-                <span asp-validation-for="Input.Description" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Input.Author" class="control-label">Author(s)</label>
-                <input asp-for="Input.Author" class="form-control" />
-                <span asp-validation-for="Input.Author" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Input.Year" class="control-label"></label>
-                <input asp-for="Input.Year" class="form-control" />
-                <span asp-validation-for="Input.Year" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Input.Pages" class="control-label"></label>
-                <input asp-for="Input.Pages" class="form-control" />
-                <span asp-validation-for="Input.Pages" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Input.Price" class="control-label"></label>
-                <input asp-for="Input.Price" class="form-control" />
-                <span asp-validation-for="Input.Price" class="text-danger"></span>
+                <label asp-for="Input.Language" class="control-label"></label>
+                <select asp-for="Input.Language" asp-items="@Html.GetEnumSelectList<BookShop.Infrastructure.DataModels.LanguageType>()" class="form-control">
+                </select>
+                <span asp-validation-for="Input.Language" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <input type="submit" value="Save" class="btn btn-primary" />

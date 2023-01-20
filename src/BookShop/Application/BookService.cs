@@ -7,6 +7,7 @@ using Microsoft.CodeAnalysis.FlowAnalysis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,4 +40,20 @@ public class BookService : IBookService
         return _db.Books.ProjectToType<BookItem>().ToList();
     }
 
+    public BookEditModel GetEdit(int bookId)
+    {
+        var book = _db.Books.Find(bookId);
+        return book.Adapt<BookEditModel>();
+    }
+
+    public void Update(BookEditModel input)
+    {
+        var book = _db.Books.Find(input.Id);
+
+        book.Name=input.Name;
+        book.Language=input.Language;
+
+        _db.SaveChanges();
+
+    }
 }

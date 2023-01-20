@@ -1,4 +1,6 @@
 using BookShop.Application;
+using BookShop.Application.Models;
+using BookShop.Infrastructure.DataModels;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -19,8 +21,15 @@ public class EditModel : PageModel
     public BookEditInput Input { get; set; }
     public void OnGet(int bookId)
     {
-        Input = _bookService.GetDetails(bookId).Adapt<BookEditInput>();
+        Input = _bookService.GetEdit(bookId).Adapt<BookEditInput>();
     }
+
+    public IActionResult OnPost()
+    {
+     _bookService.Update(Input.Adapt<BookEditModel>());
+        return RedirectToPage("./index");
+    }
+
 }
 
 public class BookEditInput
@@ -30,16 +39,5 @@ public class BookEditInput
     [StringLength(maximumLength: 50, MinimumLength = 2, ErrorMessage = "Must have a name")]
     public string Name { get; set; }
 
-    [MaxLength(500)]
-    public string Description { get; set; }
-    public int Price { get; set; }
-
-    [MaxLength(250)]
-    public string Author { get; set; }
-    public int Year { get; set; }
-
-    [Range(1, 5000, ErrorMessage = "Pages must be between {1} and {2} ")]
-    public int Pages { get; set; }
-
-    public IFormFile CoverImage { get; set; }
+    public LanguageType Language { get; set; }
 }

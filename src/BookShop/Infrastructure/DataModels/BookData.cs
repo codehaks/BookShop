@@ -10,11 +10,7 @@ namespace BookShop.Infrastructure.DataModels;
 public enum LanguageType
 {
     None = 0,
-
-    [Display(Name ="انگلیسی")]
     English = 1,
-
-    [Display(Name = "فارسی")]
     Farsi = 2,
     Russian = 3,
     Greek = 4
