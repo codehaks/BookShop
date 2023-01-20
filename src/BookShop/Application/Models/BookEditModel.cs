@@ -8,6 +8,7 @@ public class BookEditModel
 
     public string Name { get; set; }
 
+    public int CategoryId { get; set; }
     public LanguageType Language { get; set; }
 
    

@@ -54,8 +54,14 @@ public class BookService : IBookService
 
         book.Name=input.Name;
         book.Language=input.Language;
+        book.CategoryId=input.CategoryId;
 
         _db.SaveChanges();
 
+    }
+
+    public ICollection<BookCategory> GetAllCategories()
+    {
+        return _db.Categories.ToList();
     }
 }
