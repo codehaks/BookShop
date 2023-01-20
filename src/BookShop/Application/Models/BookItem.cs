@@ -13,4 +13,6 @@ public class BookItem
     public string Name { get; init; }
     public int Price { get; init; }
 
+    public string CategoryName { get; set; }
+
 }

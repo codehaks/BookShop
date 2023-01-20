@@ -4,6 +4,7 @@ using BookShop.Infrastructure.DataModels;
 using Elfie.Serialization;
 using Mapster;
 using Microsoft.CodeAnalysis.FlowAnalysis;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,8 @@ public class BookService : IBookService
 
     public IList<BookItem> GetAll()
     {
-        return _db.Books.ProjectToType<BookItem>().ToList();
+        return _db.Books.Include(b=>b.Category)
+            .ProjectToType<BookItem>().ToList();
     }
 
     public BookEditModel GetEdit(int bookId)
