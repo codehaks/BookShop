@@ -61,5 +61,7 @@ public class BookInput
     [Range(1, 5000, ErrorMessage = "Pages must be between {1} and {2} ")]
     public int Pages { get; set; }
 
+    public LanguageType Language { get; set; }
+
     public IFormFile CoverImage { get; set; }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookShop.Infrastructure.DataModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace BookShop.Application.Models;
 public class BookCreateModel
 {
     public  string Name { get; set; }
+
+    public LanguageType Language { get; set; }
 
     public  string Description { get; set; }
 

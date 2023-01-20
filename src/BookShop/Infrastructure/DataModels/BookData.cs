@@ -7,12 +7,26 @@ using System.Threading.Tasks;
 
 namespace BookShop.Infrastructure.DataModels;
 
+public enum LanguageType
+{
+    None = 0,
+
+    [Display(Name ="انگلیسی")]
+    English = 1,
+
+    [Display(Name = "فارسی")]
+    Farsi = 2,
+    Russian = 3,
+    Greek = 4
+}
 public class BookData
 {
     public int Id { get; set; }
 
     [MaxLength(50)]
     public required string Name { get; set; }
+
+    public LanguageType Language { get; set; }
 
     [MaxLength(500)]
     public required string Description { get; set; }

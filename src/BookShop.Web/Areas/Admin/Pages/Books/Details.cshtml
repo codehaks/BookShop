@@ -8,7 +8,7 @@
 <hr />
 
 <p>Name : @Model.Output.Name</p>
-
+<p>Language : @Model.Output.Language</p>
 @if (Model.Output.CoverImage is not null)
 {
     <img src="@("data:image/jpg;base64,"+Convert.ToBase64String(Model.Output.CoverImage))" />
