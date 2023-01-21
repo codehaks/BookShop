@@ -58,6 +58,12 @@ namespace BookShop.Web.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
@@ -69,13 +75,16 @@ namespace BookShop.Web.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                FirstName = user.FirstName,
+                LastName = user.LastName
             };
         }
 
         public async Task<IActionResult> OnGetAsync()
         {
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -109,6 +118,11 @@ namespace BookShop.Web.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+
+            user.FirstName = Input.FirstName;
+            user.LastName = Input.LastName;
+
+            await _userManager.UpdateAsync(user);
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

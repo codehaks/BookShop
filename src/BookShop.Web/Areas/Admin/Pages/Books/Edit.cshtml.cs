@@ -2,6 +2,7 @@ using BookShop.Application;
 using BookShop.Application.Models;
 using BookShop.Infrastructure.DataModels;
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,6 +10,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookShop.Web.Areas.Admin.Pages.Books;
 
+[Authorize("adminEditBook")]
 public class EditModel : PageModel
 {
     private readonly IBookService _bookService;
