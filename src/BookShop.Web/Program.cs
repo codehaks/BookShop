@@ -16,7 +16,11 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages()
+    .AddRazorPagesOptions(options =>
+    {
+        options.Conventions.AuthorizeAreaFolder("user", "/");
+    });
 builder.Services.AddScoped<IBookService, BookService>();
 var app = builder.Build();
 
