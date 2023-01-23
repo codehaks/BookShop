@@ -15,7 +15,9 @@
                 Size
             </th>
 
-            <th></th>
+            <th>
+                
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -28,6 +30,9 @@
 
                 <td>
                     @(file.Length / (1024 * 1024)) MB
+                </td>
+                <td>
+                <a asp-page="index" asp-page-handler="download" asp-route-filename="@file.Name" class="btn btn-primary">Download</a>
                 </td>
             </tr>
         }
