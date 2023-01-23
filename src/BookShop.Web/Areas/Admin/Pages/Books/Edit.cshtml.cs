@@ -10,7 +10,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookShop.Web.Areas.Admin.Pages.Books;
 
-[Authorize("adminEditBook")]
 public class EditModel : PageModel
 {
     private readonly IBookService _bookService;
@@ -23,17 +22,30 @@ public class EditModel : PageModel
     [BindProperty]
     public BookEditInput Input { get; set; }
 
+    public byte[]? CoverImageContent { get; set; }
+
     public SelectList CategorySelectList { get; set; }
     public void OnGet(int bookId)
     {
         var categories=_bookService.GetAllCategories();
         CategorySelectList = new SelectList(categories, "Id", "Name");
-        Input = _bookService.GetEdit(bookId).Adapt<BookEditInput>();
+        var model = _bookService.GetEdit(bookId);
+        Input =model.Adapt<BookEditInput>();
+        CoverImageContent = model.CoverImage;
     }
 
     public IActionResult OnPost()
     {
-     _bookService.Update(Input.Adapt<BookEditModel>());
+        var creatModel = Input.Adapt<BookEditModel>();
+
+        if (Input.CoverImageFile is not null)
+        {
+            using var ms = new MemoryStream();
+            Input.CoverImageFile.CopyTo(ms);
+            ms.Position = 0;
+            creatModel.CoverImage = ms.ToArray();
+        }
+        _bookService.Update(creatModel.Adapt<BookEditModel>());
         return RedirectToPage("./index");
     }
 
@@ -49,4 +61,6 @@ public class BookEditInput
     public LanguageType Language { get; set; }
 
     public int CategoryId { get; set; }
+
+    public IFormFile? CoverImageFile { get; set; }
 }

@@ -56,6 +56,11 @@ public class BookService : IBookService
         book.Language=input.Language;
         book.CategoryId=input.CategoryId;
 
+        if (input.CoverImage is not null)
+        {
+            book.CoverImage = input.CoverImage;
+        }
+        
         _db.SaveChanges();
 
     }

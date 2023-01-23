@@ -1,0 +1,22 @@
+﻿@page
+@model BookShop.Web.Areas.Admin.Pages.Users.IndexModel
+@{
+}
+
+<h1>Users</h1>
+<hr />
+
+<table class="table table-bordered">
+    @foreach (var user in Model.UserList)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.FirstName @user.LastName</td>
+            
+            <td>
+               
+            </td>
+        </tr>
+    }
+
+</table>

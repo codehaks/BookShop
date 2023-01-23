@@ -11,5 +11,7 @@ public class BookEditModel
     public int CategoryId { get; set; }
     public LanguageType Language { get; set; }
 
-   
+    public byte[]? CoverImage { get; set; }
+
+
 }

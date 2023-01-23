@@ -4,6 +4,7 @@ using BookShop.Infrastructure.DataModels;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Build.Framework;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography.Xml;
@@ -19,8 +20,16 @@ public class CreateModel : PageModel
         _bookService = bookService;
     }
 
+    public SelectList CategorySelectList { get; set; }
+
     [BindProperty]
     public BookInput Input { get; set; }
+
+    public void OnGet()
+    {
+        var categories = _bookService.GetAllCategories();
+        CategorySelectList = new SelectList(categories, "Id", "Name");
+    }
 
     public IActionResult OnPost()
     {
@@ -36,10 +45,12 @@ public class CreateModel : PageModel
         }
 
         using var ms = new MemoryStream();
-        Input.CoverImage.CopyTo(ms);
+        Input.CoverImageFile.CopyTo(ms);
         ms.Position = 0;
 
-        _bookService.Create(Input.Adapt<BookCreateModel>());
+        var model = Input.Adapt<BookCreateModel>();
+        model.CoverImage=ms.ToArray();
+        _bookService.Create(model);
 
         return RedirectToPage("./index");
     }
@@ -47,6 +58,8 @@ public class CreateModel : PageModel
 
 public class BookInput
 {
+    public int CategoryId { get; set; }
+
     [StringLength(maximumLength: 50, MinimumLength = 2, ErrorMessage = "Must have a name")]
     public string Name { get; set; }
 
@@ -63,5 +76,5 @@ public class BookInput
 
     public LanguageType Language { get; set; }
 
-    public IFormFile CoverImage { get; set; }
+    public IFormFile CoverImageFile { get; set; }
 }

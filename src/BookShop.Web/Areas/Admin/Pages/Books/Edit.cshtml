@@ -12,7 +12,24 @@
         <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <input asp-for="Input.Id" hidden/>         
+            <input asp-for="Input.Id" hidden />
+
+            <div class="mb-3">
+
+                @if (Model.CoverImageContent is not null)
+                {
+                    <img src="@("data:image/jpg;base64,"+Convert.ToBase64String(Model.CoverImageContent))" style="max-height:200px" />
+                }
+                else
+                {
+                    <img src="~/img/no-cover.jpeg" style="max-height:200px" />
+                }
+
+                <br />
+                <label asp-for="Input.CoverImageFile" class="control-label"></label>
+                <input asp-for="Input.CoverImageFile" class="form-control" />
+                <span asp-validation-for="Input.CoverImageFile" class="text-danger"></span>
+            </div>
 
             <div class="mb-3">
                 <label asp-for="Input.Name" class="control-label"></label>
