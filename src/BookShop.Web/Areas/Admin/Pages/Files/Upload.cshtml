@@ -1,4 +1,29 @@
 ﻿@page
 @model BookShop.Web.Areas.Admin.Pages.Files.UploadModel
 @{
+    ViewData["title"]="Upload"; 
+}
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" class="p-3" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label asp-for="ContentFile" class="control-label"></label>
+                <input asp-for="ContentFile" type="file" class="form-control" />
+                <span asp-validation-for="ContentFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Upload" class="btn btn-primary" />
+                <a asp-page="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
