@@ -19,4 +19,12 @@ public class IndexModel : PageModel
     {
         BookList = _bookService.GetAll();
     }
+
+    [BindProperty]
+    public string Term { get; set; }
+
+    public void OnPost()
+    {
+        BookList = _bookService.GetAll(Term);       
+    }
 }

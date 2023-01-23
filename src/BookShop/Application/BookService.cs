@@ -32,13 +32,21 @@ public class BookService : IBookService
 
     public BookDetails GetDetails(int bookId)
     {
-        var book=_db.Books.Find(bookId);
+        var book = _db.Books.Find(bookId);
         return book.Adapt<BookDetails>();
     }
 
-    public IList<BookItem> GetAll()
+    public IList<BookItem> GetAll(string term = "")
     {
-        return _db.Books.Include(b=>b.Category)
+        var q = _db.Books;
+
+        if (string.IsNullOrEmpty(term))
+        {
+            return q.Include(b => b.Category)
+            .ProjectToType<BookItem>().ToList();
+        }
+
+        return q.Where(b => b.Name.StartsWith(term)).Include(b => b.Category)
             .ProjectToType<BookItem>().ToList();
     }
 
@@ -52,15 +60,15 @@ public class BookService : IBookService
     {
         var book = _db.Books.Find(input.Id);
 
-        book.Name=input.Name;
-        book.Language=input.Language;
-        book.CategoryId=input.CategoryId;
+        book.Name = input.Name;
+        book.Language = input.Language;
+        book.CategoryId = input.CategoryId;
 
         if (input.CoverImage is not null)
         {
             book.CoverImage = input.CoverImage;
         }
-        
+
         _db.SaveChanges();
 
     }

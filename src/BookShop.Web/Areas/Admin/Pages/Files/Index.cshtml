@@ -1,0 +1,33 @@
+﻿@page
+@model BookShop.Web.Areas.Admin.Pages.Files.IndexModel
+@{
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Size
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var file in Model.FileList)
+        {
+            <tr>
+                <td>
+                    @file.Name
+                </td>
+
+                <td>
+                    @(file.Length / (1024 * 1024)) MB
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -4,13 +4,26 @@
     ViewData["title"] = "Shop";
 }
 
+<form method="post" class="row row-cols-lg-auto g-3 align-items-center mb-3">
+
+    <div class="col-12">
+        <input asp-for="Term" class="form-control" />
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+<hr />
+
 <div class="row">
     @foreach (var book in Model.BookList)
     {
 
         <div class="col-3 text-center">
 
-          <partial name="_ShopBookItem" model="book" />
+            <partial name="_ShopBookItem" model="book" />
 
         </div>
     }

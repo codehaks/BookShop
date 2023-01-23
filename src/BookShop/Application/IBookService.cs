@@ -5,7 +5,7 @@ namespace BookShop.Application;
 
 public interface IBookService
 {
-    IList<BookItem> GetAll();
+    IList<BookItem> GetAll(string term="");
     void Create(BookCreateModel input);
     BookDetails GetDetails(int bookId);
 
