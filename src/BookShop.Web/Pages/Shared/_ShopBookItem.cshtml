@@ -1,0 +1,12 @@
+﻿@model BookShop.Application.Models.BookItem
+
+<div class="card-body border border-2 mb-3">
+    @if (Model.CoverImage is not null)
+    {
+        <img src="@("data:image/jpg;base64,"+Convert.ToBase64String(Model.CoverImage))" class="img-fluid rounded" style="max-width:200px" />
+    }
+
+    <p>@Model.Name</p>
+    <p>$@Model.Price</p>
+
+</div>

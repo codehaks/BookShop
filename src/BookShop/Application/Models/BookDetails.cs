@@ -6,7 +6,7 @@ public class BookDetails
     public string Name { get; set; }
 
     public string Language { get; set; }
-
+    public byte[]? CoverImage { get; set; }
     public string Description { get; set; }
 
     public int Price { get; set; }
@@ -15,5 +15,5 @@ public class BookDetails
     public int Year { get; set; }
     public int Pages { get; set; }
 
-    public byte[]? CoverImage { get; set; }
+ 
 }
