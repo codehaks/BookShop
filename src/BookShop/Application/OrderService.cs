@@ -37,9 +37,18 @@ public class OrderService : IOrderService
         var orderList = _db.Orders
             .Include(o => o.User)
             .Include(o => o.Book)
-            //.ThenInclude(b => b.Category)
-            .ProjectToType<OrderItem>().ToList();
-       
+            .ProjectToType<OrderItem>().ToList();       
+
+        return orderList;
+    }
+
+    public IList<UserOrderItem> GetAllByUser(string userId)
+    {
+        var orderList = _db.Orders
+            .Include(o => o.User)
+            .Include(o => o.Book)
+            .Where(o=>o.UserId==userId && o.State==OrderState.Confirmed)
+            .ProjectToType<UserOrderItem>().ToList();
 
         return orderList;
     }
