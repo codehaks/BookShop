@@ -17,6 +17,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
     public DbSet<OrderData> Orders { get; set; }
 
+    public DbSet<RatingData> Ratings { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.Entity<BookCategory>().HasData(
@@ -24,6 +26,15 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new BookCategory { Id = 2, Name = "Fiction" },
             new BookCategory { Id = 3, Name = "Children" },
             new BookCategory { Id = 4, Name = "Novel" });
+
+        builder.Entity<RatingData>().HasKey(r => new
+        {
+            r.OrderId,
+            r.BookId,
+            r.UserId
+        });
+
+
         base.OnModelCreating(builder);
     }
 }
