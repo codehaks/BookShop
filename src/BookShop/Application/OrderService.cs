@@ -77,4 +77,15 @@ public class OrderService : IOrderService
               
         _db.SaveChanges();
     }
+
+    public OrderDetails GetUserBook(string userId, int bookId)
+    {
+        var order = _db.Orders
+           .Include(o => o.User)
+           .Include(o => o.Book)
+           .ThenInclude(b => b.Category)
+           .FirstOrDefault(o => o.UserId==userId && o.BookId==bookId && o.State==OrderState.Confirmed);
+
+        return order.Adapt<OrderDetails>();
+    }
 }

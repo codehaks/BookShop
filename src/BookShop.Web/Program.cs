@@ -23,6 +23,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("admin"));
 });
 
+builder.Services.AddControllers();
 builder.Services.AddRazorPages()
     .AddRazorPagesOptions(options =>
     {
@@ -57,5 +58,6 @@ app.UseAuthorization();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapControllers();
 
 app.Run();
