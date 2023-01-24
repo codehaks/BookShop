@@ -32,6 +32,18 @@ public class OrderService : IOrderService
         return order.Adapt<OrderDetails>();
     }
 
+    public IList<OrderItem> GetAll()
+    {
+        var orderList = _db.Orders
+            .Include(o => o.User)
+            .Include(o => o.Book)
+            //.ThenInclude(b => b.Category)
+            .ProjectToType<OrderItem>().ToList();
+       
+
+        return orderList;
+    }
+
     public int Create(OrderCreateModel model)
     {
         var order = model.Adapt<OrderData>();

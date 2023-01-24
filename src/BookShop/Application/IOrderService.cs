@@ -7,5 +7,6 @@ namespace BookShop.Application
         void Confirm(int orderId);
         int Create(OrderCreateModel model);
         OrderDetails Get(int orderId);
+        IList<OrderItem> GetAll();
     }
 }
