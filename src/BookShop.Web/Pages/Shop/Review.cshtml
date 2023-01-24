@@ -18,4 +18,12 @@ else
     <img src="~/img/no-cover.jpeg" style="max-height:200px" />
 }
 
+<p>Price: $@Model.Output.Price</p>
+
+<hr />
+
+<form method="post">
+    <input hidden asp-for="BookId" />
+    <button class="btn btn-primary"> Order Now</button>
+</form>
 

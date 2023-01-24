@@ -15,8 +15,17 @@ public class ReviewModel : PageModel
     }
 
     public BookDetails Output { get; set; }
+
+    [BindProperty]
+    public int BookId { get; set; }
     public void OnGet(int bookId)
     {
         Output = _bookService.GetDetails(bookId);
+    }
+
+    public void OnPost()
+    {
+        // Add order to database
+        // redirect to receipt page
     }
 }

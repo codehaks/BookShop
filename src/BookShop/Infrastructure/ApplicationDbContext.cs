@@ -15,6 +15,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<BookCategory> Categories { get; set; }
     public DbSet<BookData> Books { get; set; }
 
+    public DbSet<OrderData> Orders { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.Entity<BookCategory>().HasData(
