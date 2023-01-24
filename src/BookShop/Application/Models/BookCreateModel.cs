@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 namespace BookShop.Application.Models;
 public class BookCreateModel
 {
-
     public int CategoryId { get; set; }
     public  string Name { get; set; }
+
+    public string FileName { get; set; }
 
     public LanguageType Language { get; set; }
 

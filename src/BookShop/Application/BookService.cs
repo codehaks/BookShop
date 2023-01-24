@@ -63,6 +63,7 @@ public class BookService : IBookService
         book.Name = input.Name;
         book.Language = input.Language;
         book.CategoryId = input.CategoryId;
+        book.FileName = input.FileName;
 
         if (input.CoverImage is not null)
         {

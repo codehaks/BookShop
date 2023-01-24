@@ -32,6 +32,12 @@
                 <span asp-validation-for="Input.Name" class="text-danger"></span>
             </div>
 
+                        <div class="mb-3">
+                <label asp-for="Input.FileName" class="control-label"></label>
+                <input asp-for="Input.FileName" class="form-control" />
+                <span asp-validation-for="Input.FileName" class="text-danger"></span>
+            </div>
+
             <div class="mb-3">
                 <label asp-for="Input.Language" class="control-label"></label>
                 <select asp-for="Input.Language" asp-items="@Html.GetEnumSelectList<BookShop.Infrastructure.DataModels.LanguageType>()" class="form-control">

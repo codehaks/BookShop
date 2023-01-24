@@ -63,6 +63,8 @@ public class BookInput
     [StringLength(maximumLength: 50, MinimumLength = 2, ErrorMessage = "Must have a name")]
     public string Name { get; set; }
 
+    public string FileName { get; set; }
+
     [MaxLength(500)]
     public string Description { get; set; }
     public int Price { get; set; }

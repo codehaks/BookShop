@@ -57,7 +57,7 @@ public class BookEditInput
 
     [StringLength(maximumLength: 50, MinimumLength = 2, ErrorMessage = "Must have a name")]
     public string Name { get; set; }
-
+    public string FileName { get; set; }
     public LanguageType Language { get; set; }
 
     public int CategoryId { get; set; }

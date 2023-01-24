@@ -27,6 +27,9 @@ public class BookData
 {
     public int Id { get; set; }
 
+    [MaxLength(50)]
+    public string FileName { get; set; }
+
     public int CategoryId { get; set; }
     public BookCategory Category { get; set; }
 
