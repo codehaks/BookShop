@@ -29,7 +29,11 @@ builder.Services.AddRazorPages()
         options.Conventions.AuthorizeAreaFolder("admin", "/", "RequireAdminRole");
         options.Conventions.AuthorizeAreaFolder("user", "/");
     });
+
+
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

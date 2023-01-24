@@ -1,0 +1,31 @@
+﻿@page
+@model BookShop.Web.Pages.Shop.ReceiptModel
+@{
+    ViewData["title"] = "Receipt";
+}
+
+<h1>Receipt</h1>
+<hr />
+
+<p>Thanks for shoping with us</p>
+
+<table class="table col-6">
+    <tbody>
+        <tr>
+            <td>Order Id</td>
+            <td>@Model.Output.Id</td>
+        </tr>
+        <tr>
+            <td>Book</td>
+            <td>@Model.Output.Book.Name (@Model.Output.Book.Category.Name)</td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td>@Model.Output.Amount</td>
+        </tr>
+        <tr>
+            <td>Buyer</td>
+            <td>@Model.Output.User.FirstName @Model.Output.User.LastName </td>
+        </tr>
+    </tbody>
+</table>
