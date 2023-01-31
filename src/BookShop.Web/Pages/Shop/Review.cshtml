@@ -29,6 +29,14 @@ else
 
 <hr />
 
+<div>
+    <textarea id="note" class="form-control col-lg-6">
+
+    </textarea>
+    <button id="submit-comment" class="btn btn-secondary mt-3 mb-5">Submit</button>
+</div>
+<hr />
+
 <div id="comments">
 </div>
 
@@ -39,6 +47,17 @@ else
             $.get("/api/comment/@Model.BookId", function (commentsHtml) {
                 $("#comments").html(commentsHtml)
             })
+
+            $("#submit-comment").click(function () {
+
+                var note = $("#note").val();
+                $.post("/api/comment",
+                    { note: note, bookid: "@Model.BookId" }, 
+                    function (lastCommentHtml) {
+                        $("#comments").prepend(lastCommentHtml);
+                        $("#note").val('');
+                });
+            });
 
         });
     </script>
