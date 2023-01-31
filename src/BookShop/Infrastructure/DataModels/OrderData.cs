@@ -10,6 +10,8 @@ public class OrderData
 {
     public int Id { get; set; }
 
+    public RatingData Rating { get; set; }
+
     public string UserId { get; set; }
     public ApplicationUser User { get; set; }
 

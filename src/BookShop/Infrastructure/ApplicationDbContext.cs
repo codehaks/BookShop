@@ -24,7 +24,22 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new BookCategory { Id = 3, Name = "Children" },
             new BookCategory { Id = 4, Name = "Novel" });
 
-       
+
+        builder.Entity<BookData>()
+            .HasMany(b => b.Ratings)
+            .WithOne(r => r.Book).OnDelete(DeleteBehavior.NoAction);
+
+        builder.Entity<OrderData>()
+            .HasOne(b => b.Rating)
+            .WithOne(r => r.Order).OnDelete(DeleteBehavior.Cascade);
+
+        builder.Entity<RatingData>().HasKey(r => new
+        {
+            r.OrderId,
+            r.BookId
+        });
+
+
         base.OnModelCreating(builder);
     }
 }
