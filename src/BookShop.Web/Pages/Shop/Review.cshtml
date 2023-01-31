@@ -36,9 +36,8 @@ else
     <script>
         $(document).ready(function () {
 
-            $.get("/api/comment/@Model.BookId", function (data) {
-                //alert(data[0].note);
-                $("#comments").html(data[0].note)
+            $.get("/api/comment/@Model.BookId", function (commentsHtml) {
+                $("#comments").html(commentsHtml)
             })
 
         });

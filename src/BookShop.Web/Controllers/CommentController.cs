@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookShop.Web.Controllers;
 
-public class CommentController : ControllerBase
+public class CommentController : Controller
 {
     private readonly ICommentService _commentService;
 
@@ -16,6 +16,6 @@ public class CommentController : ControllerBase
     public IActionResult GetAllByBook(int bookId)
     {
         var comments=_commentService.GetAllByBook(bookId);
-        return Ok(comments);
+        return PartialView("_BookComments",comments);
     }
 }
