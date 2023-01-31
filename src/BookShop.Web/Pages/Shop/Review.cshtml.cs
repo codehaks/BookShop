@@ -27,6 +27,7 @@ public class ReviewModel : PageModel
     public void OnGet(int bookId)
     {
         Output = _bookService.GetDetails(bookId);
+        BookId=bookId;
     }
 
     public IActionResult OnPost()

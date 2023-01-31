@@ -24,6 +24,7 @@ builder.Services.AddAuthorization(options =>
 });
 
 builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages()
     .AddRazorPagesOptions(options =>
     {
@@ -34,6 +35,7 @@ builder.Services.AddRazorPages()
 
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
 
 var app = builder.Build();
 

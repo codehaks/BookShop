@@ -27,3 +27,20 @@ else
     <button class="btn btn-primary"> Order Now</button>
 </form>
 
+<hr />
+
+<div id="comments">
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $.get("/api/comment/@Model.BookId", function (data) {
+                //alert(data[0].note);
+                $("#comments").html(data[0].note)
+            })
+
+        });
+    </script>
+}
