@@ -1,30 +1,60 @@
 ﻿@page
 @model IndexModel
 @{
+    Layout = "_LayoutLanding";
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
 
-<div>
+<section style="background-image:url(/img/stardust.png);background-repeat: repeat;padding:0;margin:0; ">
+    <div class="row py-lg-5 ">
+        <div class="col-lg-6 col-md-8 mx-auto text-center mt-5 mb-5 text-white">
+            <h1 class="fw-light">Welcome to BookShop</h1>
+            <p class="lead text-muted">
+                Орen а bооk аnd exраnd yоur wоrld
 
-Top sells
-</div>
-<div>
+            </p>
+            <p>
+                <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary my-2">Start here</a>
+                <br />
+                <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-secondary my-2 btn-sm">Login</a>
+            </p>
+        </div>
+    </div>
+</section>
 
-<vc:user-count></vc:user-count>
+<section style="background-image:url(/img/tex2res5.png);background-repeat: repeat;padding:0;margin:0; ">
+    <div class="row py-lg-5 ">
+        <div class="col-lg-6 col-md-8 mx-auto text-center mt-5 mb-5">
+            <h1 class="fw-light">Top Sells</h1>
+            <p>
+            </p>
+        </div>
+    </div>
+</section>
 
- happy customers!
-</div>
+<section style="background-image:url(/img/lines.png);background-repeat: repeat;padding:0;margin:0; ">
+    <div class="row py-lg-5 ">
+        <div class="col-lg-6 col-md-8 mx-auto text-center mt-5 mb-5">
 
-<div>
-Recent reviews
-</div>
+            <h1 class="text-white">
+                <vc:user-count></vc:user-count>
+            </h1>
+            <h3 class="fw-light text-white-50"> happy customers!</h3>
 
-<div>
+        </div>
+    </div>
+</section>
 
-New Books
-</div>
+<section style="background-image:url(/img/ps4.png);background-repeat: repeat;padding:0;margin:0; ">
+    <div class="row py-lg-5 ">
+        <div class="col-lg-6 col-md-8 mx-auto text-center mt-5 mb-5">
+
+            &copy; 2023 - BookShop.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
+
+        </div>
+    </div>
+</section>
+
+
+
