@@ -45,6 +45,8 @@ public class UserOrderItem
 {
     public int Id { get; set; }
 
+    public int? RatingScore { get; set; }
+
     public string UserId { get; set; }
   
     public int BookId { get; set; }

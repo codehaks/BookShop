@@ -24,10 +24,10 @@ public class OrderService : IOrderService
     public OrderDetails Get(int orderId)
     {
         var order = _db.Orders
-            .Include(o=>o.User)
-            .Include(o=>o.Book)
-            .ThenInclude(b=>b.Category)
-            .First(o=>o.Id== orderId);
+            .Include(o => o.User)
+            .Include(o => o.Book)
+            .ThenInclude(b => b.Category)
+            .First(o => o.Id == orderId);
 
         return order.Adapt<OrderDetails>();
     }
@@ -37,7 +37,7 @@ public class OrderService : IOrderService
         var orderList = _db.Orders
             .Include(o => o.User)
             .Include(o => o.Book)
-            .ProjectToType<OrderItem>().ToList();       
+            .ProjectToType<OrderItem>().ToList();
 
         return orderList;
     }
@@ -47,10 +47,25 @@ public class OrderService : IOrderService
         var orderList = _db.Orders
             .Include(o => o.User)
             .Include(o => o.Book)
-            .Where(o=>o.UserId==userId && o.State==OrderState.Confirmed)
+            .Include(o=>o.Rating)
+            .Where(o => o.UserId == userId && o.State == OrderState.Confirmed)
             .ProjectToType<UserOrderItem>().ToList();
 
         return orderList;
+    }
+
+    public void AddRating(int orderId, int score)
+    {
+        var order = _db.Orders.Find(orderId);
+        order.Rating = new RatingData
+        {
+            BookId = order.BookId,
+            OrderId = orderId,
+            TimeCreated = DateTime.Now,
+            Score = (RatingScore)score
+        };
+
+        _db.SaveChanges();
     }
 
     public int Create(OrderCreateModel model)
@@ -68,13 +83,13 @@ public class OrderService : IOrderService
 
     public void Confirm(int orderId)
     {
-        var order=_db.Orders.Find(orderId);
+        var order = _db.Orders.Find(orderId);
 
-        if (order.State==OrderState.New)
+        if (order.State == OrderState.New)
         {
             order.State = OrderState.Confirmed;
         }
-              
+
         _db.SaveChanges();
     }
 
@@ -84,7 +99,7 @@ public class OrderService : IOrderService
            .Include(o => o.User)
            .Include(o => o.Book)
            .ThenInclude(b => b.Category)
-           .FirstOrDefault(o => o.UserId==userId && o.BookId==bookId && o.State==OrderState.Confirmed);
+           .FirstOrDefault(o => o.UserId == userId && o.BookId == bookId && o.State == OrderState.Confirmed);
 
         return order.Adapt<OrderDetails>();
     }

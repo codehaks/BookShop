@@ -1,6 +1,7 @@
 ﻿@page
 @model BookShop.Web.Areas.User.Pages.Orders.IndexModel
 @{
+    ViewData["title"] = "My Orders";
 }
 
 <h1>My Orders</h1>
@@ -13,6 +14,19 @@
             <td>@order.BookName</td>
             <td>@order.Amount</td>
             <td>@order.TimeCreated.ToShortDateString()</td>
+            
+            <td class="text-center">
+                @if (order.RatingScore is null)
+                {
+                    <a asp-page="rate" asp-route-orderid="@order.Id" class="btn btn-primary"> Rate</a>
+                }
+                else
+                {
+                    @order.RatingScore
+                }
+               
+               
+            </td>
             <td>
                 <a asp-controller="file" asp-action="download" asp-route-bookid="@order.BookId" class="btn btn-primary"> Download</a>
             </td>
