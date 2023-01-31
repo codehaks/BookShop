@@ -27,8 +27,6 @@ public class BookData
 {
     public int Id { get; set; }
 
-    public ICollection<RatingData> Ratings { get; set; }
-
     [MaxLength(50)]
     public string FileName { get; set; }
 

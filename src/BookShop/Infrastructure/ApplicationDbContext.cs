@@ -14,10 +14,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
     public DbSet<BookCategory> Categories { get; set; }
     public DbSet<BookData> Books { get; set; }
-
     public DbSet<OrderData> Orders { get; set; }
-
-    public DbSet<RatingData> Ratings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -27,14 +24,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             new BookCategory { Id = 3, Name = "Children" },
             new BookCategory { Id = 4, Name = "Novel" });
 
-        builder.Entity<RatingData>().HasKey(r => new
-        {
-            r.OrderId,
-            r.BookId,
-            r.UserId
-        });
-
-
+       
         base.OnModelCreating(builder);
     }
 }
