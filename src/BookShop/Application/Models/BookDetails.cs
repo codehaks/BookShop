@@ -1,8 +1,12 @@
-﻿namespace BookShop.Application.Models;
+﻿using BookShop.Infrastructure.DataModels;
+
+namespace BookShop.Application.Models;
 
 public class BookDetails
 {
     public int Id { get; set; }
+
+    public ICollection<RatingData> Ratings { get; set; }
     public string Name { get; set; }
 
     public string FileName { get; set; }

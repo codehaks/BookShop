@@ -32,8 +32,10 @@ public class BookService : IBookService
 
     public BookDetails GetDetails(int bookId)
     {
-        var book = _db.Books.Find(bookId);
-        return book.Adapt<BookDetails>();
+        var book = _db.Books.Include(b=>b.Ratings)
+            .ProjectToType<BookDetails>()
+            .First(b=>b.Id==bookId);
+        return book;
     }
 
     public IList<BookItem> GetAll(string term = "")

@@ -3,6 +3,7 @@ using BookShop.Application.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Linq;
 using System.Net;
 using System.Security.Claims;
 
