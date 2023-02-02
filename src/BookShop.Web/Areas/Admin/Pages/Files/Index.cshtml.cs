@@ -16,7 +16,7 @@ public class IndexModel : PageModel
     public void OnGet()
     {
         FileList=new List<FileInfo>();
-        var path = Path.Combine(_webHostEnvironment.ContentRootPath, "Files");
+        var path = Path.Combine(_webHostEnvironment.ContentRootPath, "/var/lib/data");
         var files = System.IO.Directory.GetFiles(path);
         foreach (var file in files)
         {
