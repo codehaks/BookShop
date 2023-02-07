@@ -1,4 +1,6 @@
 ﻿@page
+@using BookShop.Web.Common;
+@inherits DaysAgoPage
 @model BookShop.Web.Areas.Admin.Pages.Orders.IndexModel
 @{
 }
@@ -20,9 +22,3 @@
 
 </table>
 
-@functions{
-    public int DaysAgo(DateTime timeCreated)
-    {
-        return (DateTime.Now - timeCreated).Days;
-    }
-}
