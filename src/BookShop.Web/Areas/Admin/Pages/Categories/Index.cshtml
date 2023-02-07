@@ -9,21 +9,62 @@
 <hr />
 <div class="row">
     <div class="col-md-6">
-        <form method="post">
+        <form method="post" id="form">
             @for (int i = 0; i < Model.Categories.Count; i++)
             {
-                <div class="mb-3">
-                    <input name="categories[@i].Id" class="form-control" value="@Model.Categories[i].Id" hidden/>
-                    <input name="categories[@i].OriginalName" class="form-control" value="@Model.Categories[i].OriginalName" hidden />
+                <div class="input-group mb-3">
+                    <input name="categories[@i].Id" class="form-control" value="@Model.Categories[i].Id" hidden />
+                    <input name="categories[@i].IsRemoved" class="is-rm form-control" value="false" hidden />
                     <input name="categories[@i].Name" class="form-control" value="@Model.Categories[i].Name" />
+                    <input name="categories[@i].OriginalName" class="form-control" value="@Model.Categories[i].OriginalName" hidden />
 
+                    <button class="remove btn btn-outline-secondary" type="button"> <strong class="text-danger">X</strong> </button>
                 </div>
             }
-          
+
+            <div id="newctegories"></div>
+
+            <button id="add-more" class="btn btn-outline-secondary mt-2 mb-2 btn-sm"> + Add More</button>
+
+            <hr />
             <div class="mb-3">
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <a asp-page="./Index">Back to List</a>
+                <input type="submit" value="Save" class="btn btn-primary col-3" />
             </div>
         </form>
     </div>
 </div>
+
+@section scripts{
+    <script id="new-category-temp" type="text/html">
+        <div class="input-group mb-3">
+                    <input name="categories[##].Id" class="form-control"  hidden />
+                    <input name="categories[##].IsRemoved" class="is-rm form-control" value="false" hidden />
+                    <input name="categories[##].Name" class="form-control" />
+                    <input name="categories[##].OriginalName" class="form-control" hidden />
+
+                    <button class="remove btn btn-outline-secondary" type="button"> <strong class="text-danger">X</strong> </button>
+                </div>
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            var index = @Model.Categories.Count;
+            $("#add-more").click(function (event) {
+                event.preventDefault();
+                //alert('add more clicked!');
+
+                var temp = $("#new-category-temp").html();
+                var html = temp.replaceAll('##', index++);
+                $("#newctegories").append(html);
+
+            });
+
+            $("#form").on("click", ".remove", function (event) {
+                event.preventDefault();
+                $(this).parent().addClass('visually-hidden');
+                $(this).parent().find('.is-rm').val('true');
+            });
+        });
+    </script>
+}

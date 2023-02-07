@@ -35,6 +35,18 @@ public class IndexModel : PageModel
                 var bookCategory = category.Adapt<BookCategory>();
                 _db.Entry(bookCategory).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             }
+
+            if (category.Id != 0 && category.IsRemoved == true)
+            {
+                var bookCategory = category.Adapt<BookCategory>();
+                _db.Entry(bookCategory).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+            }
+
+            if (category.Id == 0 && string.IsNullOrEmpty(category.OriginalName) && string.IsNullOrEmpty(category.Name)==false)
+            {
+                var bookCategory = category.Adapt<BookCategory>();
+                _db.Entry(bookCategory).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+            }
         }
         _db.SaveChanges();
         return RedirectToPage("./index");
@@ -45,5 +57,7 @@ public class CategoryViewModel
 {
     public int Id { get; set; }
     public string Name { get; set; }
+
+    public bool IsRemoved { get; set; }
     public string OriginalName { get; set; }
 }
