@@ -13,8 +13,16 @@
             <td>@order.BookName</td>
             <td>@order.Amount</td>
             <td>@order.UserUserName</td>
+            <td>@DaysAgo(order.TimeCreated) ago</td>
             <td>@order.TimeCreated.ToShortDateString()</td>
         </tr>
     }
 
 </table>
+
+@functions{
+    public int DaysAgo(DateTime timeCreated)
+    {
+        return (DateTime.Now - timeCreated).Days;
+    }
+}

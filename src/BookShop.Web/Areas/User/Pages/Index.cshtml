@@ -1,8 +1,12 @@
 ﻿@page
 @model BookShop.Web.Areas.User.Pages.IndexModel
 @{
+    ViewData["title"] = "My Account";
+    var count = 15;
+    var name = "My Name is :";
 }
 
 <h1>@Model.UserName, Account</h1>
 <hr />
 
+@name @Model.UserName
