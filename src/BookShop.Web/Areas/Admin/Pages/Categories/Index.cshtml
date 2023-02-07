@@ -1,0 +1,29 @@
+﻿@page
+@model BookShop.Web.Areas.Admin.Pages.Categories.IndexModel
+@{
+    ViewData["title"] = "Categories";
+}
+
+<h2>Book Categories</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            @for (int i = 0; i < Model.Categories.Count; i++)
+            {
+                <div class="mb-3">
+                    <input name="categories[@i].Id" class="form-control" value="@Model.Categories[i].Id" hidden/>
+                    <input name="categories[@i].OriginalName" class="form-control" value="@Model.Categories[i].OriginalName" hidden />
+                    <input name="categories[@i].Name" class="form-control" value="@Model.Categories[i].Name" />
+
+                </div>
+            }
+          
+            <div class="mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-page="./Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
