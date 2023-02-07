@@ -22,12 +22,19 @@ public class ReviewModel : PageModel
 
     public BookDetails Output { get; set; }
 
+    public int StarsCount { get; set; }
+
     [BindProperty]
     public int BookId { get; set; }
     public void OnGet(int bookId)
     {
         Output = _bookService.GetDetails(bookId);
         BookId=bookId;
+        if (Output.Ratings.Any())
+        {
+            StarsCount = (int)Output.Ratings.Select(r => (int)r.Score).Average();
+        }
+
     }
 
     public IActionResult OnPost()
