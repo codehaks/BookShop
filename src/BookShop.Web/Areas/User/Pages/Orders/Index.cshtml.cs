@@ -1,5 +1,6 @@
 using BookShop.Application;
 using BookShop.Application.Models;
+using BookShop.Web.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
@@ -17,9 +18,6 @@ public class IndexModel : PageModel
     public IList<UserOrderItem> OrderList { get; set; }
     public void OnGet()
     {
-        var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-        var userId = userIdClaim.Value;
-
-        OrderList = _orderService.GetAllByUser(userId);
+        OrderList = _orderService.GetAllByUser(User.GetUserId());
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BookShop.Application;
+using BookShop.Web.Common;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -25,16 +26,13 @@ public class CommentController : Controller
     [Route("api/comment")]
     public IActionResult PostNewComment(string note, int bookId)
     {
-        var userName = User.Identity.Name;
+        var userName = User.GetUserName();
 
-        var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-        var userId = userIdClaim.Value;
-
-        _commentService.Create(userId, userName, bookId, note);
+        _commentService.Create(User.GetUserId(), userName, bookId, note);
         var output = new CommentOutput
         {
             Note = note,
-            UserId=userId,
+            UserId= User.GetUserId(),
             UserName=userName,
             BookId=bookId,
             TimeCreated=DateTime.Now
