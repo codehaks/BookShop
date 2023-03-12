@@ -1,12 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace BookShop.Web.Areas.Admin.Pages.Books
+namespace BookShop.Web.Areas.Admin.Pages.Books;
+
+public class ReviewModel : PageModel
 {
-    public class ReviewModel : PageModel
-    {
-        public void OnGet()
-        {
-        }
-    }
+   
 }

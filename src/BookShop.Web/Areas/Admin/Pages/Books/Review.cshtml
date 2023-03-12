@@ -13,4 +13,26 @@
  
 </div>
 
-<button class="btn btn-primary">Find</button>
+<button class="btn btn-primary" id="find">Find</button>
+<hr />
+
+<div id="bookDetails"></div>
+
+@section scripts{
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#find").click(function(){
+                var bookId=$("#bookId").val();
+
+                $.get("/api/book/details/"+bookId,function(html){
+                    $("#bookDetails").html(html);
+
+                });
+            });
+            //alert("ready!");
+        });
+
+    </script>
+}
