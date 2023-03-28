@@ -1,6 +1,7 @@
 ﻿using BookShop.Infrastructure.DataModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using System.Reflection.Emit;
 using System.Reflection.Metadata;
 
@@ -41,6 +42,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             r.BookId
         });
 
+        builder
+          .Entity<BookData>()
+          .OwnsOne(book => book.AuthorDetails, builder => { builder.ToJson(); });
 
         base.OnModelCreating(builder);
     }
