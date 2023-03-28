@@ -53,7 +53,12 @@ public class BookData
     [MaxLength(1_000_000)]
     public byte[]? CoverImage { get; set; }
 
-    //public int BookCategoryId { get; set; }
-    //public BookCategory BookCategory { get; set; }
+    public string? AuthorDetails { get; set; }
 
+}
+
+public class Author
+{
+    public required string Name { get; set; }
+    public required string Email { get; set; }
 }

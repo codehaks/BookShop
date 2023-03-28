@@ -57,6 +57,18 @@
                 </select>
                 <span asp-validation-for="Input.CategoryId" class="text-danger"></span>
             </div>
+            <hr />
+            <p>Author</p>
+            <div class="mb-3">
+                <label asp-for="Input.AuthorName" class="control-label"></label>
+                <input asp-for="Input.AuthorName" class="form-control" />
+                <span asp-validation-for="Input.AuthorName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.AuthorEmail" class="control-label"></label>
+                <input asp-for="Input.AuthorEmail" class="form-control" />
+                <span asp-validation-for="Input.AuthorEmail" class="text-danger"></span>
+            </div>
             <div class="mb-3">
                 <input type="submit" value="Save" class="btn btn-primary" />
                 <a asp-page="./Index">Back to List</a>

@@ -15,5 +15,8 @@ public class BookEditModel
 
     public byte[]? CoverImage { get; set; }
 
+    public string? AuthorName { get; set; }
+    public string? AuthorEmail { get; set; }
+
 
 }

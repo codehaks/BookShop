@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,7 +56,13 @@ public class BookService : IBookService
     public BookEditModel GetEdit(int bookId)
     {
         var book = _db.Books.Find(bookId);
-        return book.Adapt<BookEditModel>();
+
+        var author = System.Text.Json.JsonSerializer.Deserialize<Author>(book.AuthorDetails); 
+        var result= book.Adapt<BookEditModel>();
+        result.AuthorName = author.Name;
+        result.AuthorEmail = author.Email;
+
+        return result;
     }
 
     public void Update(BookEditModel input)
@@ -66,6 +73,16 @@ public class BookService : IBookService
         book.Language = input.Language;
         book.CategoryId = input.CategoryId;
         book.FileName = input.FileName;
+
+        var author = new Author { Email = input.AuthorEmail, Name = input.AuthorName };
+
+        var json = System.Text.Json.JsonSerializer.Serialize(author);
+
+        book.AuthorDetails= json;
+
+        //{"Name":"Andrew Lock","Email":"Andrew@gmail.com"}
+
+
 
         if (input.CoverImage is not null)
         {

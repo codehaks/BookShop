@@ -62,5 +62,8 @@ public class BookEditInput
 
     public int CategoryId { get; set; }
 
+    public string? AuthorName { get; set; }
+    public string? AuthorEmail { get; set; }
+
     public IFormFile? CoverImageFile { get; set; }
 }
