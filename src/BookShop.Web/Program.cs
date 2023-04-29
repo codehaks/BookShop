@@ -25,6 +25,7 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
+builder.Services.AddServerSideBlazor();
 builder.Services.AddRazorPages()
     .AddRazorPagesOptions(options =>
     {
@@ -61,5 +62,8 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();
+app.UsePathBase("/");
+
+app.MapBlazorHub();
 
 app.Run();
