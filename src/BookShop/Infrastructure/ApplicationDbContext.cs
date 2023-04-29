@@ -41,6 +41,12 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             r.BookId
         });
 
+        builder.Entity<BookData>()
+            .OwnsOne(b => b.AuthorDetails,
+                builder =>
+                {
+                    builder.ToJson();
+                });
 
         base.OnModelCreating(builder);
     }

@@ -53,7 +53,7 @@ public class BookData
     [MaxLength(1_000_000)]
     public byte[]? CoverImage { get; set; }
 
-    public string? AuthorDetails { get; set; }
+    public Author? AuthorDetails { get; set; }
 
 }
 

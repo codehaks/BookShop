@@ -49,7 +49,8 @@ public class BookService : IBookService
             .ProjectToType<BookItem>().ToList();
         }
 
-        return q.Where(b => b.Name.StartsWith(term)).Include(b => b.Category)
+        return q.Where(b => b.Name.StartsWith(term) || (b.AuthorDetails !=null && b.AuthorDetails.Name.StartsWith(term)))
+            .Include(b => b.Category)
             .ProjectToType<BookItem>().ToList();
     }
 
@@ -57,10 +58,9 @@ public class BookService : IBookService
     {
         var book = _db.Books.Find(bookId);
 
-        var author = System.Text.Json.JsonSerializer.Deserialize<Author>(book.AuthorDetails); 
         var result= book.Adapt<BookEditModel>();
-        result.AuthorName = author.Name;
-        result.AuthorEmail = author.Email;
+        result.AuthorName = book.AuthorDetails.Name;
+        result.AuthorEmail = book.AuthorDetails.Email;
 
         return result;
     }
@@ -74,15 +74,9 @@ public class BookService : IBookService
         book.CategoryId = input.CategoryId;
         book.FileName = input.FileName;
 
-        var author = new Author { Email = input.AuthorEmail, Name = input.AuthorName };
+        var author = new Author { Email = input.AuthorEmail, Name = input.AuthorName };   
 
-        var json = System.Text.Json.JsonSerializer.Serialize(author);
-
-        book.AuthorDetails= json;
-
-        //{"Name":"Andrew Lock","Email":"Andrew@gmail.com"}
-
-
+        book.AuthorDetails= author;
 
         if (input.CoverImage is not null)
         {
