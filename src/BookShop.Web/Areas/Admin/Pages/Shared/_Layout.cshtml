@@ -4,6 +4,7 @@
 
 @section styles{
     @RenderSection("styles", required: false)
+    <base href="~/" />
 }
 
 <div class="container-fluid" dir="ltr">
@@ -22,6 +23,7 @@
 </div>
 
 @section Scripts{
+    <script src="~/_framework/blazor.server.js"></script>
     @RenderSection("scripts", required: false)
 
 }
