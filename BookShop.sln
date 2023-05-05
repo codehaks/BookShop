@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookShop", "src\BookShop\Bo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookShop.Web", "src\BookShop.Web\BookShop.Web.csproj", "{0CB889B4-D618-4B7E-9C3C-E07663567F60}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{65F1324B-BDB1-41C6-984C-A11C2D39D888}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A00346FA-ABB8-4DF4-BE13-613A5625A329} = {65F1324B-BDB1-41C6-984C-A11C2D39D888}
+		{0CB889B4-D618-4B7E-9C3C-E07663567F60} = {65F1324B-BDB1-41C6-984C-A11C2D39D888}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {503E5469-14C8-48CC-A67C-55B190132AC9}
