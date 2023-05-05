@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookShop.Web.ViewComponents;
 
-public class UserCountViewComponent:ViewComponent
+public class UserCountViewComponent : ViewComponent
 {
     private readonly UserManager<ApplicationUser> _userManager;
 
@@ -16,6 +16,6 @@ public class UserCountViewComponent:ViewComponent
     public async Task<IViewComponentResult> InvokeAsync()
     {
         var count = await _userManager.Users.CountAsync();
-        return View("Default",count); 
+        return View("Default", count);
     }
 }

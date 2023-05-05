@@ -1,9 +1,7 @@
 using BookShop.Application;
 using BookShop.Infrastructure;
-using BookShop.Infrastructure.DataModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +11,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddIdentity<ApplicationUser,IdentityRole>(options =>
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 options.SignIn.RequireConfirmedAccount = false)
     .AddDefaultUI()
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -31,7 +29,6 @@ builder.Services.AddRazorPages()
         options.Conventions.AuthorizeAreaFolder("admin", "/", "RequireAdminRole");
         options.Conventions.AuthorizeAreaFolder("user", "/");
     });
-
 
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IOrderService, OrderService>();

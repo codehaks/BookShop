@@ -13,9 +13,10 @@ public class IndexModel : PageModel
     }
 
     public IList<FileInfo> FileList { get; set; }
+
     public void OnGet()
     {
-        FileList=new List<FileInfo>();
+        FileList = new List<FileInfo>();
         var path = Path.Combine(_webHostEnvironment.ContentRootPath, "/var/lib/data");
         var files = System.IO.Directory.GetFiles(path);
         foreach (var file in files)
@@ -26,8 +27,8 @@ public class IndexModel : PageModel
 
     public IActionResult OnGetDownload(string fileName)
     {
-        var path = Path.Combine(_webHostEnvironment.ContentRootPath, "Files",fileName);
+        var path = Path.Combine(_webHostEnvironment.ContentRootPath, "Files", fileName);
         var content = System.IO.File.ReadAllBytes(path);
-        return File(content, "application/pdf",fileName);
+        return File(content, "application/pdf", fileName);
     }
 }

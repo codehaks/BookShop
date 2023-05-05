@@ -15,7 +15,6 @@ public class UploadModel : PageModel
     [BindProperty]
     public IFormFile ContentFile { get; set; }
 
-
     public async Task<IActionResult> OnPostAsync()
     {
         if (!ModelState.IsValid)
@@ -34,11 +33,7 @@ public class UploadModel : PageModel
             using var stream = System.IO.File.Create(path);
             stream.Position = 0;
             await ContentFile.CopyToAsync(stream);
-
-
         }
-
-
 
         return RedirectToPage("./Index");
     }

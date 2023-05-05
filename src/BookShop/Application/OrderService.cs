@@ -1,14 +1,8 @@
-﻿using BookShop.Application.Models;
+using BookShop.Application.Models;
 using BookShop.Infrastructure;
 using BookShop.Infrastructure.DataModels;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookShop.Application;
 
@@ -47,7 +41,7 @@ public class OrderService : IOrderService
         var orderList = _db.Orders
             .Include(o => o.User)
             .Include(o => o.Book)
-            .Include(o=>o.Rating)
+            .Include(o => o.Rating)
             .Where(o => o.UserId == userId && o.State == OrderState.Confirmed)
             .ProjectToType<UserOrderItem>().ToList();
 

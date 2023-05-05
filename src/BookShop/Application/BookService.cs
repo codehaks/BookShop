@@ -1,16 +1,9 @@
-﻿using BookShop.Application.Models;
+using Ardalis.GuardClauses;
+using BookShop.Application.Models;
 using BookShop.Infrastructure;
 using BookShop.Infrastructure.DataModels;
-using Elfie.Serialization;
 using Mapster;
-using Microsoft.CodeAnalysis.FlowAnalysis;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookShop.Application;
 
@@ -32,9 +25,9 @@ public class BookService : IBookService
 
     public BookDetails GetDetails(int bookId)
     {
-        var book = _db.Books.Include(b=>b.Ratings)
+        var book = _db.Books.Include(b => b.Ratings)
             .ProjectToType<BookDetails>()
-            .First(b=>b.Id==bookId);
+            .First(b => b.Id == bookId);
         return book;
     }
 
@@ -55,13 +48,14 @@ public class BookService : IBookService
     public BookEditModel GetEdit(int bookId)
     {
         var book = _db.Books.Find(bookId);
+        Guard.Against.Null(book);
         return book.Adapt<BookEditModel>();
     }
 
     public void Update(BookEditModel input)
     {
         var book = _db.Books.Find(input.Id);
-
+        Guard.Against.Null(book);
         book.Name = input.Name;
         book.Language = input.Language;
         book.CategoryId = input.CategoryId;
@@ -73,7 +67,6 @@ public class BookService : IBookService
         }
 
         _db.SaveChanges();
-
     }
 
     public ICollection<BookCategory> GetAllCategories()

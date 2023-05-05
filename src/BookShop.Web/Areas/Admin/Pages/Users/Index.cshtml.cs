@@ -15,10 +15,11 @@ public class IndexModel : PageModel
     }
 
     public IList<ApplicationUser> UserList { get; set; }
+
     public async Task<IActionResult> OnGet()
     {
         UserList = await _userManager.Users.ToListAsync();
-        
+
         return Page();
     }
 }

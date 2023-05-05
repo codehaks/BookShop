@@ -1,6 +1,6 @@
-﻿using BookShop.Application;
-using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using BookShop.Application;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookShop.Web.Controllers;
 
@@ -34,10 +34,10 @@ public class CommentController : Controller
         var output = new CommentOutput
         {
             Note = note,
-            UserId=userId,
-            UserName=userName,
-            BookId=bookId,
-            TimeCreated=DateTime.Now
+            UserId = userId,
+            UserName = userName,
+            BookId = bookId,
+            TimeCreated = DateTime.Now
         };
         return PartialView("_LastComment", output);
     }

@@ -1,13 +1,10 @@
+using System.ComponentModel.DataAnnotations;
 using BookShop.Application;
 using BookShop.Application.Models;
-using BookShop.Infrastructure.DataModels;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Build.Framework;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography.Xml;
 
 namespace BookShop.Web.Areas.Admin.Pages.Books;
 
@@ -49,7 +46,7 @@ public class CreateModel : PageModel
         ms.Position = 0;
 
         var model = Input.Adapt<BookCreateModel>();
-        model.CoverImage=ms.ToArray();
+        model.CoverImage = ms.ToArray();
         _bookService.Create(model);
 
         return RedirectToPage("./index");
@@ -67,10 +64,12 @@ public class BookInput
 
     [MaxLength(500)]
     public string Description { get; set; }
+
     public int Price { get; set; }
 
     [MaxLength(250)]
     public string Author { get; set; }
+
     public int Year { get; set; }
 
     [Range(1, 5000, ErrorMessage = "Pages must be between {1} and {2} ")]

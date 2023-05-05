@@ -15,6 +15,7 @@ public class IndexModel : PageModel
     }
 
     public IList<BookItem> BookList { get; set; }
+
     public void OnGet()
     {
         BookList = _bookService.GetAll();
@@ -25,6 +26,6 @@ public class IndexModel : PageModel
 
     public void OnPost()
     {
-        BookList = _bookService.GetAll(Term);       
+        BookList = _bookService.GetAll(Term);
     }
 }

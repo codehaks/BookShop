@@ -1,4 +1,4 @@
-﻿namespace BookShop.Web;
+namespace BookShop.Web;
 
 public static class Values
 {

@@ -1,11 +1,10 @@
+using System.Security.Claims;
+using Ardalis.GuardClauses;
 using BookShop.Application;
 using BookShop.Application.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Linq;
-using System.Net;
-using System.Security.Claims;
 
 namespace BookShop.Web.Pages.Shop;
 
@@ -14,6 +13,7 @@ public class ReviewModel : PageModel
 {
     private readonly IBookService _bookService;
     private readonly IOrderService _orderService;
+
     public ReviewModel(IBookService bookService, IOrderService orderService)
     {
         _bookService = bookService;
@@ -24,26 +24,28 @@ public class ReviewModel : PageModel
 
     [BindProperty]
     public int BookId { get; set; }
+
     public void OnGet(int bookId)
     {
         Output = _bookService.GetDetails(bookId);
-        BookId=bookId;
+        BookId = bookId;
     }
 
     public IActionResult OnPost()
     {
         var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+        Guard.Against.Null(userIdClaim);
         var userId = userIdClaim.Value;
 
-        var book=_bookService.GetDetails(BookId);
+        var book = _bookService.GetDetails(BookId);
 
         // GUID
 
-        var orderId=_orderService.Create(new OrderCreateModel
+        var orderId = _orderService.Create(new OrderCreateModel
         {
-            BookId= BookId,
-            Amount=book.Price,
-            UserId=userId
+            BookId = BookId,
+            Amount = book.Price,
+            UserId = userId
         });
 
         // Send to Bank/Payment system!

@@ -1,10 +1,7 @@
-﻿using BookShop.Application;
-using BookShop.Application.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using BookShop.Application;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookShop.Web.Controllers;
 
@@ -28,7 +25,7 @@ public class FileController : ControllerBase
         var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
         var currentUserId = userIdClaim.Value;
 
-        var order=_orderService.GetUserBook(currentUserId, bookId);
+        var order = _orderService.GetUserBook(currentUserId, bookId);
 
         if (order is not null)
         {

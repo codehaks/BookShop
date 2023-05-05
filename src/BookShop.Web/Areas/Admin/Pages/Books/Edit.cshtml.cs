@@ -1,12 +1,10 @@
+using System.ComponentModel.DataAnnotations;
 using BookShop.Application;
 using BookShop.Application.Models;
-using BookShop.Infrastructure.DataModels;
 using Mapster;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
 
 namespace BookShop.Web.Areas.Admin.Pages.Books;
 
@@ -25,12 +23,13 @@ public class EditModel : PageModel
     public byte[]? CoverImageContent { get; set; }
 
     public SelectList CategorySelectList { get; set; }
+
     public void OnGet(int bookId)
     {
-        var categories=_bookService.GetAllCategories();
+        var categories = _bookService.GetAllCategories();
         CategorySelectList = new SelectList(categories, "Id", "Name");
         var model = _bookService.GetEdit(bookId);
-        Input =model.Adapt<BookEditInput>();
+        Input = model.Adapt<BookEditInput>();
         CoverImageContent = model.CoverImage;
     }
 
@@ -48,7 +47,6 @@ public class EditModel : PageModel
         _bookService.Update(creatModel.Adapt<BookEditModel>());
         return RedirectToPage("./index");
     }
-
 }
 
 public class BookEditInput
@@ -57,6 +55,7 @@ public class BookEditInput
 
     [StringLength(maximumLength: 50, MinimumLength = 2, ErrorMessage = "Must have a name")]
     public string Name { get; set; }
+
     public string FileName { get; set; }
     public LanguageType Language { get; set; }
 

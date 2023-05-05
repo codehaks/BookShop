@@ -1,8 +1,6 @@
 using BookShop.Application;
 using BookShop.Application.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.DotNet.Scaffolding.Shared.ProjectModel;
 
 namespace BookShop.Web.Areas.Admin.Pages.Orders;
 
@@ -16,6 +14,7 @@ public class IndexModel : PageModel
     }
 
     public IList<OrderItem> OrderList { get; set; }
+
     public void OnGet()
     {
         OrderList = _orderService.GetAll();

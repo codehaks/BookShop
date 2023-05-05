@@ -1,4 +1,4 @@
-﻿using BookShop.Infrastructure.DataModels;
+using BookShop.Infrastructure.DataModels;
 
 namespace BookShop.Application.Models;
 
@@ -14,6 +14,4 @@ public class BookEditModel
     public LanguageType Language { get; set; }
 
     public byte[]? CoverImage { get; set; }
-
-
 }

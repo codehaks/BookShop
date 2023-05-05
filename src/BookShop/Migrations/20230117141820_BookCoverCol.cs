@@ -1,36 +1,35 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace BookShop.Migrations
+namespace BookShop.Migrations;
+
+/// <inheritdoc />
+public partial class BookCoverCol : Migration
 {
     /// <inheritdoc />
-    public partial class BookCoverCol : Migration
+    protected override void Up(MigrationBuilder migrationBuilder)
     {
-        /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AddColumn<byte[]>(
-                name: "CoverImage",
-                table: "Books",
-                type: "varbinary(max)",
-                maxLength: 1000000,
-                nullable: true);
+        migrationBuilder.AddColumn<byte[]>(
+            name: "CoverImage",
+            table: "Books",
+            type: "varbinary(max)",
+            maxLength: 1000000,
+            nullable: true);
 
-            migrationBuilder.UpdateData(
-                table: "Books",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "CoverImage",
-                value: null);
-        }
+        migrationBuilder.UpdateData(
+            table: "Books",
+            keyColumn: "Id",
+            keyValue: 1,
+            column: "CoverImage",
+            value: null);
+    }
 
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "CoverImage",
-                table: "Books");
-        }
+    /// <inheritdoc />
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.DropColumn(
+            name: "CoverImage",
+            table: "Books");
     }
 }

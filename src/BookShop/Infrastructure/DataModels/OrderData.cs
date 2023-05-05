@@ -1,9 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace BookShop.Infrastructure.DataModels;
 
 public class OrderData
@@ -27,7 +21,7 @@ public class OrderData
 
 public enum OrderState
 {
-    New=0,
-    Confirmed=1,
-    Canceled=2
+    New = 0,
+    Confirmed = 1,
+    Canceled = 2
 }
