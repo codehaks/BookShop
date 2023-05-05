@@ -63,7 +63,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();
-app.UsePathBase("/");
 app.MapBlazorHub();
 
 app.Run();
