@@ -22,10 +22,10 @@
     <PackageVersion Include="Mapster" Version="7.3.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.5" />
     <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
-    <PackageVersion Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.2" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.5" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5" />
-    <PackageVersion Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
+    <PackageVersion Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
     <PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.6" />
     <PackageVersion Include="Ardalis.GuardClauses" Version="4.0.1" />
   </ItemGroup>

@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{65F1324B-BDB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{6B002B53-750B-4C4B-9CD4-84672C3CCC5C}"
 	ProjectSection(SolutionItems) = preProject
+		AssemblyInfo.cs = AssemblyInfo.cs
+		BannedSymbols.txt = BannedSymbols.txt
 		Directory.Build.props = Directory.Build.props
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
