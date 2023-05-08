@@ -1,9 +1,4 @@
-﻿using BookShop.Infrastructure.DataModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BookShop.Infrastructure.DataModels;
 
 namespace BookShop.Application.Models;
 
@@ -48,12 +43,10 @@ public class UserOrderItem
     public int? RatingScore { get; set; }
 
     public string UserId { get; set; }
-  
+
     public int BookId { get; set; }
     public string BookName { get; set; }
 
     public int Amount { get; set; }
     public DateTime TimeCreated { get; set; }
 }
-
-

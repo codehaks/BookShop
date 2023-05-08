@@ -1,4 +1,4 @@
-﻿using BookShop.Infrastructure.DataModels;
+using BookShop.Infrastructure.DataModels;
 
 namespace BookShop.Application.Models;
 
@@ -17,6 +17,4 @@ public class BookEditModel
 
     public string? AuthorName { get; set; }
     public string? AuthorEmail { get; set; }
-
-
 }

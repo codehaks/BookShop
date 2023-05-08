@@ -1,4 +1,4 @@
-﻿using BookShop.Infrastructure.DataModels;
+using BookShop.Infrastructure.DataModels;
 
 namespace BookShop.Application.Models;
 
@@ -20,6 +20,4 @@ public class BookDetails
     public string Author { get; set; }
     public int Year { get; set; }
     public int Pages { get; set; }
-
- 
 }

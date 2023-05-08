@@ -1,17 +1,8 @@
-﻿using BookShop.Application.Models;
+using BookShop.Application.Models;
 using BookShop.Infrastructure;
 using BookShop.Infrastructure.DataModels;
-using Elfie.Serialization;
 using Mapster;
-using Microsoft.CodeAnalysis.FlowAnalysis;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookShop.Application;
 
@@ -33,9 +24,9 @@ public class BookService : IBookService
 
     public BookDetails GetDetails(int bookId)
     {
-        var book = _db.Books.Include(b=>b.Ratings)
+        var book = _db.Books.Include(b => b.Ratings)
             .ProjectToType<BookDetails>()
-            .First(b=>b.Id==bookId);
+            .First(b => b.Id == bookId);
         return book;
     }
 
@@ -49,7 +40,7 @@ public class BookService : IBookService
             .ProjectToType<BookItem>().ToList();
         }
 
-        return q.Where(b => b.Name.StartsWith(term) || (b.AuthorDetails !=null && b.AuthorDetails.Name.StartsWith(term)))
+        return q.Where(b => b.Name.StartsWith(term) || (b.AuthorDetails != null && b.AuthorDetails.Name.StartsWith(term)))
             .Include(b => b.Category)
             .ProjectToType<BookItem>().ToList();
     }
@@ -58,7 +49,7 @@ public class BookService : IBookService
     {
         var book = _db.Books.Find(bookId);
 
-        var result= book.Adapt<BookEditModel>();
+        var result = book.Adapt<BookEditModel>();
         result.AuthorName = book.AuthorDetails.Name;
         result.AuthorEmail = book.AuthorDetails.Email;
 
@@ -74,9 +65,9 @@ public class BookService : IBookService
         book.CategoryId = input.CategoryId;
         book.FileName = input.FileName;
 
-        var author = new Author { Email = input.AuthorEmail, Name = input.AuthorName };   
+        var author = new Author { Email = input.AuthorEmail, Name = input.AuthorName };
 
-        book.AuthorDetails= author;
+        book.AuthorDetails = author;
 
         if (input.CoverImage is not null)
         {
@@ -84,7 +75,6 @@ public class BookService : IBookService
         }
 
         _db.SaveChanges();
-
     }
 
     public ICollection<BookCategory> GetAllCategories()

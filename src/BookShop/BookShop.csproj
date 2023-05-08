@@ -13,12 +13,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mapster"  />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore"  />
+    <PackageReference Include="Mapster" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer"  />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design"  />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Meziantou.Analyzer">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
