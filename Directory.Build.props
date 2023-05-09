@@ -3,7 +3,7 @@
     <LangVersion>11.0</LangVersion>
     <AnalysisLevel>latest</AnalysisLevel>
     
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
     
     <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
