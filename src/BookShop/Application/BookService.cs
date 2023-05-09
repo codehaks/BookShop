@@ -1,3 +1,4 @@
+using System.Runtime.Versioning;
 using BookShop.Application.Models;
 using BookShop.Infrastructure;
 using BookShop.Infrastructure.DataModels;
@@ -48,12 +49,18 @@ public class BookService : IBookService
     public BookEditModel GetEdit(int bookId)
     {
         var book = _db.Books.Find(bookId);
+        if (book == null)
+        {
+            throw new InvalidOperationException();
+        }
 
         var result = book.Adapt<BookEditModel>();
-        result.AuthorName = book.AuthorDetails.Name;
-        result.AuthorEmail = book.AuthorDetails.Email;
-
+        result.AuthorName = book.AuthorDetails?.Name;
+        result.AuthorEmail = book.AuthorDetails?.Email;
         return result;
+
+
+
     }
 
     public void Update(BookEditModel input)

@@ -66,7 +66,7 @@ public class OrderService : IOrderService
     {
         var order = model.Adapt<OrderData>();
 
-        order.TimeCreated = DateTime.Now;
+        order.TimeCreated = DateTime.UtcNow;
         order.State = OrderState.New;
 
         _db.Orders.Add(order);

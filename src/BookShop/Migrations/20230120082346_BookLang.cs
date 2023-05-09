@@ -2,35 +2,34 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace BookShop.Migrations
+namespace BookShop.Migrations;
+
+/// <inheritdoc />
+public partial class BookLang : Migration
 {
     /// <inheritdoc />
-    public partial class BookLang : Migration
+    protected override void Up(MigrationBuilder migrationBuilder)
     {
-        /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AddColumn<int>(
-                name: "Language",
-                table: "Books",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+        migrationBuilder.AddColumn<int>(
+            name: "Language",
+            table: "Books",
+            type: "int",
+            nullable: false,
+            defaultValue: 0);
 
-            migrationBuilder.UpdateData(
-                table: "Books",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "Language",
-                value: 1);
-        }
+        migrationBuilder.UpdateData(
+            table: "Books",
+            keyColumn: "Id",
+            keyValue: 1,
+            column: "Language",
+            value: 1);
+    }
 
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "Language",
-                table: "Books");
-        }
+    /// <inheritdoc />
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.DropColumn(
+            name: "Language",
+            table: "Books");
     }
 }
