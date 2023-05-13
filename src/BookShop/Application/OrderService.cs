@@ -55,7 +55,7 @@ public class OrderService : IOrderService
         {
             BookId = order.BookId,
             OrderId = orderId,
-            TimeCreated = DateTime.Now,
+            TimeCreated = DateTime.UtcNow,
             Score = (RatingScore)score
         };
 
