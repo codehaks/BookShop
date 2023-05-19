@@ -1,7 +1,7 @@
-﻿@page
+@page
 @model BookShop.Web.Areas.Admin.Pages.Books.DetailsModel
 @{
-
+    ViewData["title"] = "Details";
 }
 
 <h1>Book Details</h1>
@@ -11,5 +11,5 @@
 <p>Language : @Model.Output.Language</p>
 @if (Model.Output.CoverImage is not null)
 {
-    <img src="@("data:image/jpg;base64,"+Convert.ToBase64String(Model.Output.CoverImage))" />
+    <img src="@("data:image/jpg;base64,"+Convert.ToBase64String(Model.Output.CoverImage))" class="img-fluid " style="max-width:200px" />
 }
