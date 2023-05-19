@@ -1,11 +1,12 @@
 using Ardalis.GuardClauses;
+using BookShop.Application.Interfaces;
 using BookShop.Application.Models;
 using BookShop.Infrastructure;
 using BookShop.Infrastructure.DataModels;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookShop.Application;
+namespace BookShop.Application.Services;
 
 public class BookService : IBookService
 {

@@ -1,6 +1,6 @@
 using BookShop.Application.Models;
 
-namespace BookShop.Application;
+namespace BookShop.Application.Interfaces;
 
 public interface IOrderService
 {

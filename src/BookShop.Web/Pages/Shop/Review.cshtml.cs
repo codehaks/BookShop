@@ -1,6 +1,6 @@
 using System.Security.Claims;
 using Ardalis.GuardClauses;
-using BookShop.Application;
+using BookShop.Application.Interfaces;
 using BookShop.Application.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

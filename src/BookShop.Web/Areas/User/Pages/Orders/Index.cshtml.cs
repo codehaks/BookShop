@@ -1,5 +1,5 @@
 using System.Security.Claims;
-using BookShop.Application;
+using BookShop.Application.Interfaces;
 using BookShop.Application.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using BookShop.Application;
+using BookShop.Application.Interfaces;
 using BookShop.Application.Models;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;

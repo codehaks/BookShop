@@ -1,7 +1,7 @@
 using BookShop.Application.Models;
 using BookShop.Infrastructure.DataModels;
 
-namespace BookShop.Application;
+namespace BookShop.Application.Interfaces;
 
 public interface IBookService
 {

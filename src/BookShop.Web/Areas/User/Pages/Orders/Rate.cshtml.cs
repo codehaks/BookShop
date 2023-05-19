@@ -1,4 +1,4 @@
-using BookShop.Application;
+using BookShop.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

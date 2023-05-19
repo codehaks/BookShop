@@ -1,5 +1,7 @@
 using System.Security.Claims;
 using BookShop.Application;
+using BookShop.Application.Interfaces;
+using BookShop.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookShop.Web.Controllers;

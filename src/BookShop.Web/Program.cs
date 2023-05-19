@@ -1,4 +1,5 @@
-using BookShop.Application;
+using BookShop.Application.Interfaces;
+using BookShop.Application.Services;
 using BookShop.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

@@ -1,5 +1,5 @@
 using System.Security.Claims;
-using BookShop.Application;
+using BookShop.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

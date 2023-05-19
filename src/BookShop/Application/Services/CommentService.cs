@@ -1,8 +1,9 @@
+using BookShop.Application.Interfaces;
 using BookShop.Infrastructure;
 using BookShop.Infrastructure.DataModels;
 using Mapster;
 
-namespace BookShop.Application;
+namespace BookShop.Application.Services;
 
 public class CommentService : ICommentService
 {

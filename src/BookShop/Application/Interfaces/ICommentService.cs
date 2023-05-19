@@ -1,4 +1,6 @@
-namespace BookShop.Application;
+using BookShop.Application.Services;
+
+namespace BookShop.Application.Interfaces;
 
 public interface ICommentService
 {
