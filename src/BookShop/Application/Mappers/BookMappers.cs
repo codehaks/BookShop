@@ -17,13 +17,43 @@ public static class BookMappers
             Ratings = bookData.Ratings,
             Name = bookData.Name,
             FileName = bookData.FileName,
-            Language = Enum.GetName(typeof(LanguageType), bookData.Language),
+            Language = bookData.Language.ToString(),
             CoverImage = bookData.CoverImage,
             Description = bookData.Description,
             Price = bookData.Price,
             Author = bookData.Author,
             Year = bookData.Year,
             Pages = bookData.Pages
+        };
+
+        return bookDetails;
+    }
+
+    public static BookEditModel MapToBookEdit(BookData bookData)
+    {
+        var bookDetails = new BookEditModel
+        {
+            Id = bookData.Id,
+
+            Name = bookData.Name,
+            FileName = bookData.FileName,
+            Language = bookData.Language,
+            CoverImage = bookData.CoverImage,
+
+        };
+
+        return bookDetails;
+    }
+
+    public static BookItem MapToBookItem(BookData bookData)
+    {
+        var bookDetails = new BookItem
+        {
+            Id = bookData.Id,
+            Name = bookData.Name,
+            Language = bookData.Language.ToString(),
+            CoverImage = bookData.CoverImage,
+            Price = bookData.Price
         };
 
         return bookDetails;

@@ -1,5 +1,6 @@
 using Ardalis.GuardClauses;
 using BookShop.Application.Interfaces;
+using BookShop.Application.Mappers;
 using BookShop.Application.Models;
 using BookShop.Infrastructure;
 using BookShop.Infrastructure.DataModels;
@@ -27,9 +28,8 @@ public class BookService : IBookService
     public BookDetails GetDetails(int bookId)
     {
         var book = _db.Books.Include(b => b.Ratings)
-            .ProjectToType<BookDetails>()
             .First(b => b.Id == bookId);
-        return book;
+        return BookMappers.MapToBookDetails(book);
     }
 
     public IList<BookItem> GetAll(string term = "")
