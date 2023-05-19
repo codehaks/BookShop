@@ -5,7 +5,7 @@ namespace BookShop.Infrastructure.DataModels;
 public class BookCategory
 {
     public int Id { get; set; }
-    public required string Name { get; set; }
+    public string Name { get; set; }
 
     //public List<BookData> Books { get; set; }
 }
@@ -26,23 +26,23 @@ public class BookData
     public ICollection<RatingData>? Ratings { get; set; }
 
     [MaxLength(50)]
-    public required string FileName { get; set; }
+    public string FileName { get; set; }
 
     public int CategoryId { get; set; }
     public BookCategory? Category { get; set; }
 
     [MaxLength(50)]
-    public required string Name { get; set; }
+    public string Name { get; set; }
 
     public LanguageType Language { get; set; }
 
     [MaxLength(500)]
-    public required string Description { get; set; }
+    public string Description { get; set; }
 
     public int Price { get; set; }
 
     [MaxLength(250)]
-    public required string Author { get; set; }
+    public string Author { get; set; }
 
     public int Year { get; set; }
     public int Pages { get; set; }

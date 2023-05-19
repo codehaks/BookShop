@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BookShop.Application.Models;
 using BookShop.Infrastructure.DataModels;
 
 namespace BookShop.Application.Mappers;
+
 public static class BookMappers
 {
     public static BookDetails MapToBookDetails(BookData bookData)
@@ -39,7 +35,6 @@ public static class BookMappers
             FileName = bookData.FileName,
             Language = bookData.Language,
             CoverImage = bookData.CoverImage,
-
         };
 
         return bookDetails;

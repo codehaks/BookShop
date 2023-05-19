@@ -1,3 +1,4 @@
+using Ardalis.GuardClauses;
 using BookShop.Application.Interfaces;
 using BookShop.Application.Models;
 using BookShop.Infrastructure;
@@ -52,6 +53,8 @@ public class OrderService : IOrderService
     public void AddRating(int orderId, int score)
     {
         var order = _db.Orders.Find(orderId);
+        Guard.Against.Null(order);
+
         order.Rating = new RatingData
         {
             BookId = order.BookId,
@@ -67,7 +70,7 @@ public class OrderService : IOrderService
     {
         var order = model.Adapt<OrderData>();
 
-        order.TimeCreated = DateTime.Now;
+        order.TimeCreated = DateTime.UtcNow;
         order.State = OrderState.New;
 
         _db.Orders.Add(order);
@@ -79,6 +82,8 @@ public class OrderService : IOrderService
     public void Confirm(int orderId)
     {
         var order = _db.Orders.Find(orderId);
+
+        Guard.Against.Null(order);
 
         if (order.State == OrderState.New)
         {
@@ -95,6 +100,8 @@ public class OrderService : IOrderService
            .Include(o => o.Book)
            .ThenInclude(b => b.Category)
            .FirstOrDefault(o => o.UserId == userId && o.BookId == bookId && o.State == OrderState.Confirmed);
+
+        Guard.Against.Null(order);
 
         return order.Adapt<OrderDetails>();
     }
