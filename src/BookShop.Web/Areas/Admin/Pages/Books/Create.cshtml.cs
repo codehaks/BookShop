@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using BookShop.Application.Interfaces;
 using BookShop.Application.Models;
+using BookShop.Infrastructure.Enums;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

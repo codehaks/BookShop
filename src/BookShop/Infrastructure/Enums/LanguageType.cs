@@ -1,4 +1,4 @@
-﻿namespace BookShop.Infrastructure.DataModels;
+namespace BookShop.Infrastructure.Enums;
 
 public enum LanguageType
 {

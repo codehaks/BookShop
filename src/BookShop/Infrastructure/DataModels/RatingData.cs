@@ -1,3 +1,5 @@
+using BookShop.Infrastructure.Enums;
+
 namespace BookShop.Infrastructure.DataModels;
 
 public class RatingData

@@ -1,4 +1,4 @@
-using BookShop.Infrastructure.DataModels;
+using BookShop.Infrastructure.Enums;
 
 namespace BookShop.Application.Models;
 

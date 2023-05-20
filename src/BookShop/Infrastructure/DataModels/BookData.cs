@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using BookShop.Infrastructure.Enums;
 
 namespace BookShop.Infrastructure.DataModels;
 
