@@ -69,6 +69,8 @@ public class RegisterConfirmationModel : PageModel
                 pageHandler: null,
                 values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                 protocol: Request.Scheme);
+
+            //await _sender.SendEmailAsync(Email, "Register Confirmation", $"Confirm : {EmailConfirmationUrl}");
         }
 
         return Page();

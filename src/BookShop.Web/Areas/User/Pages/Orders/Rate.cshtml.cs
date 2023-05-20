@@ -21,7 +21,7 @@ public class RateModel : PageModel
 
     public void OnGet(int orderId)
     {
-        orderId = OrderId;
+        OrderId = orderId;
     }
 
     public IActionResult OnPost()

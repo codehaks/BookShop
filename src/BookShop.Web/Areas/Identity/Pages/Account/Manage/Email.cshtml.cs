@@ -16,16 +16,13 @@ namespace BookShop.Web.Areas.Identity.Pages.Account.Manage;
 public class EmailModel : PageModel
 {
     private readonly UserManager<ApplicationUser> _userManager;
-    private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly IEmailSender _emailSender;
 
     public EmailModel(
         UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager,
         IEmailSender emailSender)
     {
         _userManager = userManager;
-        _signInManager = signInManager;
         _emailSender = emailSender;
     }
 
