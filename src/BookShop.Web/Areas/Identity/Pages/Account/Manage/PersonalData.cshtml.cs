@@ -24,9 +24,12 @@ public class PersonalDataModel : PageModel
         var user = await _userManager.GetUserAsync(User);
         if (user == null)
         {
-            return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            var userId = _userManager.GetUserId(User);
+            _logger.LogError("Unable to load user with ID: {UserId}", userId);
+            return NotFound($"Unable to load user with ID '{userId}'.");
         }
 
+        _logger.LogInformation("User '{UserName}' accessed the PersonalData page.", user.UserName);
         return Page();
     }
 }
