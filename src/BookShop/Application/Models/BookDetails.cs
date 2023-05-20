@@ -15,7 +15,7 @@ public class BookDetails
     public byte[]? CoverImage { get; set; }
     public required string Description { get; set; }
 
-    public  int Price { get; set; }
+    public int Price { get; set; }
 
     public required string Author { get; set; }
     public int Year { get; set; }
