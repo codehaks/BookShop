@@ -2,7 +2,7 @@ using BookShop.Infrastructure.DataModels;
 
 namespace BookShop.Application.Models;
 
-public class BookDetails
+public record BookDetails
 {
     public int Id { get; set; }
 
@@ -20,4 +20,18 @@ public class BookDetails
     public required string Author { get; set; }
     public int Year { get; set; }
     public int Pages { get; set; }
+
+    //public void Deconstruct(out string name,out int year)
+    //{
+    //    name = Name;
+    //    year = Year;
+    //}
+
+    //public void Deconstruct(out string name, out int year,out string language)
+    //{
+    //    name = Name;
+    //    year = Year;
+    //    language = Language;
+    //}
+    
 }
