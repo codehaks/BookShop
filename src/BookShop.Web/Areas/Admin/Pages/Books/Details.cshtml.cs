@@ -29,18 +29,10 @@ public class DetailsModel : PageModel
         _logger.LogInformation("Fetching details for book with ID: {BookId}", bookId);
 
         Output = _bookService.GetDetails(bookId);
-
-        var (name, year) = Output;
-
-        var (_, _ ,lang) = Output;
-
         if (Output == null)
         {
             _logger.LogInformation("No details found for book with ID: {BookId}", bookId);
             return;
         }
-
-        _logger.LogInformation("Details retrieved successfully book name '{name}' for year '{year}' in '{lang}' language", name, year,lang) ;
-
     }
 }
