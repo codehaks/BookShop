@@ -2,6 +2,7 @@ using Ardalis.GuardClauses;
 using BookShop.Application.Interfaces;
 using BookShop.Application.Mappers;
 using BookShop.Application.Models;
+using BookShop.Domain;
 using BookShop.Infrastructure;
 using BookShop.Infrastructure.DataModels;
 using Mapster;
@@ -20,7 +21,12 @@ public class BookService : IBookService
 
     public void Create(BookCreateModel input)
     {
-        _db.Books.Add(input.Adapt<BookData>());
+        var year = new Year(input.Year);
+
+        var book = input.Adapt<BookData>();
+        book.Year = year.Value;
+
+        _db.Books.Add(book);
 
         _db.SaveChanges();
     }

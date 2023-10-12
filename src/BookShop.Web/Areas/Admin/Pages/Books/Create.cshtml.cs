@@ -30,11 +30,6 @@ public class CreateModel : PageModel
 
     public IActionResult OnPost()
     {
-        if (Input.Year > DateTime.Now.Year)
-        {
-            ModelState.AddModelError("Year", "Not valid");
-        }
-
         if (ModelState.IsValid == false)
         {
             ModelState.AddModelError(nameof(Pages), "Can not create Book!");
