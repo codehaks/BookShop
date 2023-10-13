@@ -5,7 +5,7 @@ public class Year
 
     public Year(int value)
     {
-        if (value < 0) throw new ArgumentOutOfRangeException(nameof(value), "Year can not be less than 0");
+        ArgumentOutOfRangeException.ThrowIfNegative(value);
         Value = value;
     }
 }
