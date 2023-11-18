@@ -1,9 +1,13 @@
 <Project>
   <PropertyGroup>
+<<<<<<< HEAD
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>11.0</LangVersion>
+=======
+    <LangVersion>12.0</LangVersion>
+>>>>>>> develop
     <AnalysisLevel>latest</AnalysisLevel>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>

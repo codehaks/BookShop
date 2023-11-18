@@ -2,6 +2,8 @@
   <ItemGroup>
     <PackageVersion Include="coverlet.collector" Version="3.2.0" />
     <PackageVersion Include="FluentAssertions.Analyzers" Version="0.17.2" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0-rc.2" />
+    <PackageVersion Include="RazorEngine.NetCore" Version="3.1.0" />
     <PackageVersion Include="xunit.analyzers" Version="1.1.0" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.4.5" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
@@ -10,6 +12,7 @@
     <PackageVersion Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
     <PackageVersion Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
     <PackageVersion Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+<<<<<<< HEAD
     <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.1" />
     <PackageVersion Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.6.40" />
     <PackageVersion Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.4" />
@@ -18,15 +21,25 @@
     <PackageVersion Include="Roslynator.Formatting.Analyzers" Version="4.3.0" />
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.0.0.68202" />
     <PackageVersion Include="Meziantou.Analyzer" Version="2.0.52" />
+=======
+    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.8.14" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.11.0-beta1.23472.1" />
+    <PackageVersion Include="Roslynator.Analyzers" Version="4.6.2" />
+    <PackageVersion Include="Roslynator.CodeAnalysis.Analyzers" Version="4.6.2" />
+    <PackageVersion Include="Roslynator.Formatting.Analyzers" Version="4.6.2" />
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.12.0.78982" />
+    <PackageVersion Include="Meziantou.Analyzer" Version="2.0.110" />
+>>>>>>> develop
     <packageVersion Include="SecurityCodeScan.VS2019" Version="5.6.7" />
-    <PackageVersion Include="Mapster" Version="7.3.0" />
-    <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.5" />
-    <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
-    <PackageVersion Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.5" />
+    <PackageVersion Include="Mapster" Version="7.4.1-pre01" />
+    <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5" />
-    <PackageVersion Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
-    <PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.6" />
-    <PackageVersion Include="Ardalis.GuardClauses" Version="4.0.1" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+    <PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
+    <PackageVersion Include="Ardalis.GuardClauses" Version="4.2.0" />
   </ItemGroup>
 </Project>

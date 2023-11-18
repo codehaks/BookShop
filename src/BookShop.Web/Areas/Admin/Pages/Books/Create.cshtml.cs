@@ -6,18 +6,12 @@ using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using CategoryId = int;
 
 namespace BookShop.Web.Areas.Admin.Pages.Books;
 
-public class CreateModel : PageModel
+public class CreateModel(IBookService bookService) : PageModel
 {
-    private readonly IBookService _bookService;
-
-    public CreateModel(IBookService bookService)
-    {
-        _bookService = bookService;
-    }
-
     public SelectList CategorySelectList { get; set; }
 
     [BindProperty]
@@ -25,18 +19,13 @@ public class CreateModel : PageModel
 
     public void OnGet()
     {
-        var categories = _bookService.GetAllCategories();
+        var categories = bookService.GetAllCategories();
         CategorySelectList = new SelectList(categories, "Id", "Name");
     }
 
     public IActionResult OnPost()
     {
-        if (Input.Year > DateTime.Now.Year)
-        {
-            ModelState.AddModelError("Year", "Not valid");
-        }
-
-        if (ModelState.IsValid == false)
+        if (!ModelState.IsValid)
         {
             ModelState.AddModelError(nameof(Pages), "Can not create Book!");
             return Page();
@@ -48,7 +37,7 @@ public class CreateModel : PageModel
 
         var model = Input.Adapt<BookCreateModel>();
         model.CoverImage = ms.ToArray();
-        _bookService.Create(model);
+        bookService.Create(model);
 
         return RedirectToPage("./index");
     }
@@ -56,7 +45,7 @@ public class CreateModel : PageModel
 
 public class BookInput
 {
-    public int CategoryId { get; set; }
+    public CategoryId CategoryId { get; set; }
 
     [StringLength(maximumLength: 50, MinimumLength = 2, ErrorMessage = "Must have a name")]
     public string Name { get; set; }
