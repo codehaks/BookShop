@@ -23,6 +23,8 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("admin"));
 });
 
+//builder.Services.AddRazorComponents();
+
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages()
