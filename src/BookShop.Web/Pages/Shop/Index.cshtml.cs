@@ -14,7 +14,7 @@ public class IndexModel : PageModel
         _bookService = bookService;
     }
 
-    public IList<BookItem> BookList { get; set; }
+    public IList<BookItem>? BookList { get; set; }
 
     public void OnGet()
     {

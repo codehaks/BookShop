@@ -1,6 +1,7 @@
 using BookShop.Application.Interfaces;
 using BookShop.Application.Services;
 using BookShop.Infrastructure;
+using BookShop.Web.Components;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,7 +24,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("admin"));
 });
 
-//builder.Services.AddRazorComponents();
+builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
@@ -60,7 +61,12 @@ app.UseRouting();
 app.UseAuthorization();
 app.UseAuthorization();
 
+app.UseAntiforgery();
+
 app.MapRazorPages();
 app.MapControllers();
+app.MapBlazorHub();
+app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
 
+//app.MapFallbackToPage("/shared/_Host");
 app.Run();
