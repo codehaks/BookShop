@@ -28,8 +28,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages()
     .AddRazorPagesOptions(options =>
     {
-        options.Conventions.AuthorizeAreaFolder("admin", "/", "RequireAdminRole");
-        options.Conventions.AuthorizeAreaFolder("user", "/");
+        //options.Conventions.AuthorizeAreaFolder("admin", "/", "RequireAdminRole");
+        //options.Conventions.AuthorizeAreaFolder("user", "/");
     });
 
 builder.Services.AddScoped<IBookService, BookService>();

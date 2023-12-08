@@ -7,7 +7,6 @@
 
 <h1>@Model.Output.Name</h1>
 <hr />
-<p>Rating: @Model.Output.Ratings.Select(r=>(int)r.Score).Average()</p>
 <p>Language: @Model.Output.Language</p>
 @if (Model.Output.CoverImage is not null)
 {
