@@ -10,9 +10,18 @@
     @foreach (var order in Model.OrderList)
     {
         <tr>
-            <td>@order.BookName</td>
+            <td>
+                @if (order.Details is not null)
+                {
+                    <p>
+                        @order.Details.Book.Name - @order.Details.Book.Price$
+                    </p>
+                }
+            </td>
             <td>@order.Amount</td>
-            <td>@order.UserUserName</td>
+            <td>
+               @order.UserUserName
+            </td>
             <td>@order.TimeCreated.ToShortDateString()</td>
         </tr>
     }

@@ -23,6 +23,8 @@ public class OrderItem
 {
     public int Id { get; set; }
 
+    public OrderDataDetails? Details { get; set; }
+
     public string UserId { get; set; }
     public string UserUserName { get; set; }
 

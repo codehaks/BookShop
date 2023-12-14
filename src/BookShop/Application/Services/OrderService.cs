@@ -32,6 +32,7 @@ public class OrderService : IOrderService
         var orderList = _db.Orders
             .Include(o => o.User)
             .Include(o => o.Book)
+            .AsNoTracking()
             .ProjectToType<OrderItem>().ToList();
 
         return orderList;
@@ -66,6 +67,9 @@ public class OrderService : IOrderService
     public int Create(OrderCreateModel model)
     {
         var order = model.Adapt<OrderData>();
+        var book = _db.Books.Find(model.BookId);
+
+        order.Details = new OrderDataDetails { Book = book.Adapt<BookInfo>() };
 
         order.TimeCreated = DateTime.UtcNow;
         order.State = OrderState.New;
