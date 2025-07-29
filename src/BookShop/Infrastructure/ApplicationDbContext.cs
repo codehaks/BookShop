@@ -29,6 +29,12 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             .HasMany(b => b.Ratings)
             .WithOne(r => r.Book).OnDelete(DeleteBehavior.NoAction);
 
+        builder.Entity<OrderData>().OwnsOne(o => o.Details, d =>
+        {
+            d.OwnsOne(b => b.Book);
+            d.ToJson();
+        });
+
         builder.Entity<OrderData>()
             .HasOne(b => b.Rating)
             .WithOne(r => r.Order).OnDelete(DeleteBehavior.Cascade);

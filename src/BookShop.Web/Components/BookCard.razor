@@ -1,0 +1,29 @@
+﻿@using BookShop.Application.Models
+
+
+<div class="card-body border border-2 mb-3">
+
+    <a asp-page="./review" asp-route-bookid="@BookItem.Id">
+        @if (BookItem.CoverImage is not null)
+        {
+            <img src="@("data:image/jpg;base64,"+Convert.ToBase64String(BookItem.CoverImage))" class="img-fluid rounded" style="max-width:200px" />
+        }
+        else
+        {
+            <img src="~/img/no-cover.jpeg" style="max-height:200px" />
+        }
+
+    </a>
+
+    <p>@BookItem.Name</p>
+    <p>$@BookItem.Price</p>
+
+</div>
+
+@code {
+
+    [Parameter]
+    public BookItem BookItem { get; set; }
+
+   
+}

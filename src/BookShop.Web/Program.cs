@@ -20,7 +20,7 @@ options.SignIn.RequireConfirmedAccount = false)
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("admin"));
+    //options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("admin"));
 });
 
 builder.Services.AddControllers();
@@ -28,8 +28,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages()
     .AddRazorPagesOptions(options =>
     {
-        options.Conventions.AuthorizeAreaFolder("admin", "/", "RequireAdminRole");
-        options.Conventions.AuthorizeAreaFolder("user", "/");
+        //options.Conventions.AuthorizeAreaFolder("admin", "/", "RequireAdminRole");
+        //options.Conventions.AuthorizeAreaFolder("user", "/");
     });
 
 builder.Services.AddScoped<IBookService, BookService>();
