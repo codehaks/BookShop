@@ -1,6 +1,7 @@
 using BookShop.Application.Interfaces;
 using BookShop.Application.Services;
 using BookShop.Infrastructure;
+using BookShop.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,6 +37,9 @@ builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
 
+// Register DbInitializer for seeding
+builder.Services.AddScoped<DbInitializer>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -59,5 +63,16 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();
+
+// Seed the database
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dbInitializer = services.GetRequiredService<DbInitializer>();
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    
+    logger.LogInformation("Starting database initialization...");
+    await dbInitializer.SeedAsync();
+}
 
 app.Run();
